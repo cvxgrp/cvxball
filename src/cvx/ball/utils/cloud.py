@@ -8,10 +8,11 @@ import plotly.graph_objects as go
 class Cloud:
     points: np.ndarray
 
-    def scatter(self, size=10):
+    def scatter(self, size=5, **kwargs):
         return go.Scatter(
             x=self.points[:, 0],
             y=self.points[:, 1],
             mode="markers",
-            marker=dict(symbol="x", size=size, color="blue"),
+            marker=dict(symbol="circle", size=size, color="black"),
+            **kwargs,
         )

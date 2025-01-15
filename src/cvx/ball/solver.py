@@ -1,7 +1,7 @@
 import cvxpy as cp
 import numpy as np
 
-from .utils.circle import Circle
+from .utils.circle import Center, Circle
 
 
 def min_circle_cvx(points, **kwargs):
@@ -22,4 +22,4 @@ def min_circle_cvx(points, **kwargs):
     problem = cp.Problem(objective=objective, constraints=constraints)
     problem.solve(**kwargs)
 
-    return Circle(radius=float(r.value), center=x.value)
+    return Circle(radius=float(r.value), center=Center(x.value))
