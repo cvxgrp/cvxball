@@ -16,7 +16,7 @@ jobs:
       - uses: cvxgrp/.github/actions/uv/coverage@v2.0.3
         with:
           source-folder: ${{ env.SOURCE_FOLDER }}
-          tests-folder: ${{ env.TESTS_FOLDER }}
+          tests-folder: src/tests
 
       - name: Coveralls GitHub Action
         uses: coverallsapp/github-action@v2
