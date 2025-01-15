@@ -10,12 +10,9 @@ jobs:
       - name: Checkout [${{ github.repository }}]
         uses: actions/checkout@v4
 
-      - name: Load .env file
-        uses: xom9ikk/dotenv@v2  # Dedicated action for loading .env files
-
       - uses: cvxgrp/.github/actions/uv/coverage@v2.0.3
         with:
-          source-folder: ${{ env.SOURCE_FOLDER }}
+          source-folder: src/cvx
           tests-folder: src/tests
 
       - name: Coveralls GitHub Action
@@ -30,12 +27,9 @@ jobs:
       - name: Checkout [${{ github.repository }}]
         uses: actions/checkout@v4
 
-      - name: Load .env file
-        uses: xom9ikk/dotenv@v2  # Dedicated action for loading .env files
-
       - uses: cvxgrp/.github/actions/uv/deptry@v2.0.3
         with:
-          source-folder: ${{ env.SOURCE_FOLDER }}
+          source-folder: src/cvx
 
   pre-commit:
     runs-on: ubuntu-latest
