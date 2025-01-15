@@ -5,6 +5,8 @@ This repository has been created using the
 
 We compute the smallest enclosing circle/ball for a set of points.
 
+![Smallest enclosing circle for $50$ random points](example.png)
+
 ```bash
 # create a numpy array where each row corresponds to a point
 # Each row should have the same number of elements and they
