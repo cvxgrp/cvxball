@@ -19,7 +19,7 @@ Before sending a pull request, make sure you do the following:
 ## Building cvxball from source
 
 You'll need to build cvxball locally in order to start editing code.
-To install cvxball from source, clone the Github
+To install cvxball from source, clone the GitHub
 repository, navigate to its root, and run the following command:
 
 ```bash
@@ -29,7 +29,7 @@ make install
 ## Contributing code
 
 To contribute to cvxball, send us pull requests.
-For those new to contributing, check out Github's
+For those new to contributing, check out GitHub's
 [guide](https://help.github.com/articles/using-pull-requests/).
 
 Once you've made your pull request, a member of the cvxball
