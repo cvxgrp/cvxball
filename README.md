@@ -1,6 +1,5 @@
 # cvxball
 
-[![PyPI version](https://badge.fury.io/py/cvxball.svg)](https://badge.fury.io/py/cvxball)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.txt)
 [![CI](https://github.com/cvxgrp/cvxball/actions/workflows/ci.yml/badge.svg)](https://github.com/cvxgrp/cvxball/actions/workflows/ci.yml)
 [![Coverage Status](https://coveralls.io/repos/github/cvxgrp/cvxball/badge.svg?branch=main)](https://coveralls.io/github/cvxgrp/cvxball?branch=main)
