@@ -4,7 +4,7 @@
 
 venv:
 	curl -LsSf https://astral.sh/uv/install.sh | sh
-	uv venv
+	uv venv --python '3.12'
 
 install: venv ## Install dependencies and setup environment
 	uv pip install --upgrade pip
