@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-.PHONY: venv install fmt clean help test
+.PHONY: venv install fmt clean help test jupyter
 
 venv:
 	curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -28,3 +28,7 @@ help: ## Show this help message
 	@echo ""
 	@echo "Targets:"
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "  %-15s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+
+jupyter: install ## Install a run a Jupyter Lab server
+	uv pip install jupyterlab
+	uv run jupyter lab
