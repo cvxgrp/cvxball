@@ -23,7 +23,8 @@ dev = [
     "pre-commit>=4.0.1",
     "kaleido==0.2.1",
     "mosek==10.2.1",
-    "hexaly"
+    "hexaly",
+    "matplotlib>=3.10.0",
 ]
 
 [tool.uv.sources]
