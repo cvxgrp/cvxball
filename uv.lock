@@ -116,6 +116,7 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "kaleido" },
+    { name = "mosek" },
     { name = "pre-commit" },
     { name = "pytest" },
     { name = "pytest-cov" },
@@ -132,6 +133,7 @@ requires-dist = [
 [package.metadata.requires-dev]
 dev = [
     { name = "kaleido", specifier = "==0.2.1" },
+    { name = "mosek", specifier = "==10.2.13" },
     { name = "pre-commit", specifier = ">=4.0.1" },
     { name = "pytest", specifier = ">=8.3.4" },
     { name = "pytest-cov", specifier = ">=6.0.0" },
@@ -225,6 +227,21 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/a1/2b/680662678a57afab1685f0c431c2aba7783ce4344f06ec162074d485d469/kaleido-0.2.1-py2.py3-none-manylinux2014_aarch64.whl", hash = "sha256:845819844c8082c9469d9c17e42621fbf85c2b237ef8a86ec8a8527f98b6512a", size = 83711746 },
     { url = "https://files.pythonhosted.org/packages/88/89/4b6f8bb3f9ab036fd4ad1cb2d628ab5c81db32ac9aa0641d7b180073ba43/kaleido-0.2.1-py2.py3-none-win32.whl", hash = "sha256:ecc72635860be616c6b7161807a65c0dbd9b90c6437ac96965831e2e24066552", size = 62312480 },
     { url = "https://files.pythonhosted.org/packages/f7/9a/0408b02a4bcb3cf8b338a2b074ac7d1b2099e2b092b42473def22f7b625f/kaleido-0.2.1-py2.py3-none-win_amd64.whl", hash = "sha256:4670985f28913c2d063c5734d125ecc28e40810141bdb0a46f15b76c1d45f23c", size = 65945521 },
+]
+
+[[package]]
+name = "mosek"
+version = "10.2.13"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/23/08/a79579aebaac21b452e188d559546bb23fcd0d867652a451ec801d301a41/Mosek-10.2.13-cp37-abi3-macosx_10_15_x86_64.whl", hash = "sha256:61c555d0f30e109dffc641f7564ef6825e18c80f576e57e0d32a2b71e144d16e", size = 14515944 },
+    { url = "https://files.pythonhosted.org/packages/ab/46/826b5a51a3b68eeea0050ea9f9bfdb76498b1b9986ed1ee78ae34c115467/Mosek-10.2.13-cp37-abi3-manylinux2014_x86_64.whl", hash = "sha256:dde527953ba1b9b72f5663e012251c12804792752ddbf8fbbe8c7f42629cba28", size = 15693285 },
+    { url = "https://files.pythonhosted.org/packages/14/22/a0bdcf055789f6ffa979bdb1880f58517be80670b0ccbad5357c5ac08f5c/Mosek-10.2.13-cp37-abi3-manylinux_2_29_aarch64.whl", hash = "sha256:8a9537a55732439909a42acd07723d0a8efb189f596a31e308209481259a5d12", size = 10871500 },
+    { url = "https://files.pythonhosted.org/packages/38/ff/2b203fd7515d95b1e8b8f8740d20a704ef58aed08ccfedb6230b0dddce4e/Mosek-10.2.13-cp37-abi3-win_amd64.whl", hash = "sha256:7d33dd5b39cd73a3de531f10484ff89dcb0991d4c954cc7b2acbdc7f40840d52", size = 20046984 },
+    { url = "https://files.pythonhosted.org/packages/8d/25/7b84b074df19f52c109bc2854a26f47f465906544105a3a287ac79e10c08/Mosek-10.2.13-cp38-abi3-macosx_11_0_arm64.whl", hash = "sha256:15a51be328e5a797452a595fa911ce2ad32defabb1f385185f02ab37e1c966d3", size = 8253214 },
 ]
 
 [[package]]
