@@ -11,11 +11,6 @@ def min_circle_cvx(points, **kwargs):
     x = cp.Variable(points.shape[1], name="Midpoint")
     objective = cp.Minimize(r)
     constraints = [cp.SOC(r, point - x) for point in points]
-    # * #np.ones(points.shape[0]),
-    #        points - cp.outer(np.ones(points.shape[0]), x),
-    #        axis=1,
-    #    )
-    # ]
 
     problem = cp.Problem(objective=objective, constraints=constraints)
     problem.solve(**kwargs)
