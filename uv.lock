@@ -115,6 +115,7 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "hexaly" },
     { name = "kaleido" },
     { name = "mosek" },
     { name = "pre-commit" },
@@ -132,8 +133,9 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "hexaly", index = "https://pip.hexaly.com/" },
     { name = "kaleido", specifier = "==0.2.1" },
-    { name = "mosek", specifier = "==10.2.13" },
+    { name = "mosek", specifier = "==10.2.1" },
     { name = "pre-commit", specifier = ">=4.0.1" },
     { name = "pytest", specifier = ">=8.3.4" },
     { name = "pytest-cov", specifier = ">=6.0.0" },
@@ -199,6 +201,19 @@ wheels = [
 ]
 
 [[package]]
+name = "hexaly"
+version = "13.0.20241205"
+source = { registry = "https://pip.hexaly.com/" }
+wheels = [
+    { url = "https://pip.hexaly.com/hexaly/hexaly-13.0.20241205-py2.py3.py27.py36.py37.py38.py39.py310.py311.py312.py313-none-linux_aarch64.whl" },
+    { url = "https://pip.hexaly.com/hexaly/hexaly-13.0.20241205-py2.py3.py27.py36.py37.py38.py39.py310.py311.py312.py313-none-linux_x86_64.whl" },
+    { url = "https://pip.hexaly.com/hexaly/hexaly-13.0.20241205-py2.py3.py27.py36.py37.py38.py39.py310.py311.py312.py313-none-macosx_10_11_x86_64.whl" },
+    { url = "https://pip.hexaly.com/hexaly/hexaly-13.0.20241205-py2.py3.py27.py36.py37.py38.py39.py310.py311.py312.py313-none-macosx_11_0_arm64.whl" },
+    { url = "https://pip.hexaly.com/hexaly/hexaly-13.0.20241205-py2.py3.py27.py36.py37.py38.py39.py310.py311.py312.py313-none-win32.whl" },
+    { url = "https://pip.hexaly.com/hexaly/hexaly-13.0.20241205-py2.py3.py27.py36.py37.py38.py39.py310.py311.py312.py313-none-win_amd64.whl" },
+]
+
+[[package]]
 name = "identify"
 version = "2.6.5"
 source = { registry = "https://pypi.org/simple" }
@@ -231,17 +246,17 @@ wheels = [
 
 [[package]]
 name = "mosek"
-version = "10.2.13"
+version = "10.2.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "numpy" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/23/08/a79579aebaac21b452e188d559546bb23fcd0d867652a451ec801d301a41/Mosek-10.2.13-cp37-abi3-macosx_10_15_x86_64.whl", hash = "sha256:61c555d0f30e109dffc641f7564ef6825e18c80f576e57e0d32a2b71e144d16e", size = 14515944 },
-    { url = "https://files.pythonhosted.org/packages/ab/46/826b5a51a3b68eeea0050ea9f9bfdb76498b1b9986ed1ee78ae34c115467/Mosek-10.2.13-cp37-abi3-manylinux2014_x86_64.whl", hash = "sha256:dde527953ba1b9b72f5663e012251c12804792752ddbf8fbbe8c7f42629cba28", size = 15693285 },
-    { url = "https://files.pythonhosted.org/packages/14/22/a0bdcf055789f6ffa979bdb1880f58517be80670b0ccbad5357c5ac08f5c/Mosek-10.2.13-cp37-abi3-manylinux_2_29_aarch64.whl", hash = "sha256:8a9537a55732439909a42acd07723d0a8efb189f596a31e308209481259a5d12", size = 10871500 },
-    { url = "https://files.pythonhosted.org/packages/38/ff/2b203fd7515d95b1e8b8f8740d20a704ef58aed08ccfedb6230b0dddce4e/Mosek-10.2.13-cp37-abi3-win_amd64.whl", hash = "sha256:7d33dd5b39cd73a3de531f10484ff89dcb0991d4c954cc7b2acbdc7f40840d52", size = 20046984 },
-    { url = "https://files.pythonhosted.org/packages/8d/25/7b84b074df19f52c109bc2854a26f47f465906544105a3a287ac79e10c08/Mosek-10.2.13-cp38-abi3-macosx_11_0_arm64.whl", hash = "sha256:15a51be328e5a797452a595fa911ce2ad32defabb1f385185f02ab37e1c966d3", size = 8253214 },
+    { url = "https://files.pythonhosted.org/packages/f6/b2/67425cb75c3fa2d72e41a9c2499e05d04c615123f9851223254c74527c65/Mosek-10.2.1-cp37-abi3-macosx_10_15_x86_64.whl", hash = "sha256:32330c98b5c4dbae85269172eb3f50e7f98da62f48fc22724132215365ae2dde", size = 14503084 },
+    { url = "https://files.pythonhosted.org/packages/bf/6f/ff96d09f74ff51f48f3f2631953dba8ca535b31663708288075c3b9f0ffc/Mosek-10.2.1-cp37-abi3-manylinux2014_x86_64.whl", hash = "sha256:0fda0c5105f7a1e911a0375247eb3faac0a1103ece69281b2792df10404d61ec", size = 15075322 },
+    { url = "https://files.pythonhosted.org/packages/e2/e3/334e9caf901c70314736724ed8e6cfc5c27d27353f47c32a6a9d5edd3f5b/Mosek-10.2.1-cp37-abi3-manylinux_2_29_aarch64.whl", hash = "sha256:40116af736538fffbff10cb27a2574ac9ebb130bb071a78ecfeb6e912e4ff2e2", size = 10405066 },
+    { url = "https://files.pythonhosted.org/packages/fe/f4/cb577c00b60b8090df74aa47b65966d033e455debd1fc4f8d607a9b5e996/Mosek-10.2.1-cp37-abi3-win_amd64.whl", hash = "sha256:214e38686d7637d673f3bef8aff1caade60e53a72a1fd4543c3be3bf304489f5", size = 19494364 },
+    { url = "https://files.pythonhosted.org/packages/70/9f/7933c008a982a49841279a6a93445243b975c0d4f32a4eb5cd1bbf7c58da/Mosek-10.2.1-cp38-abi3-macosx_11_0_arm64.whl", hash = "sha256:8cced1ae2e4951552da708d574bca4aef2c43d6f15fe1babc43bfe73989648c5", size = 7812691 },
 ]
 
 [[package]]

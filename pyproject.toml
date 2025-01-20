@@ -22,8 +22,16 @@ dev = [
     "pytest-cov>=6.0.0",
     "pre-commit>=4.0.1",
     "kaleido==0.2.1",
-    "mosek==10.2.13",
+    "mosek==10.2.1",
+    "hexaly"
 ]
+
+[tool.uv.sources]
+hexaly = { index = "hexaly" }
+
+[[tool.uv.index]]
+name = "hexaly"
+url = "https://pip.hexaly.com"
 
 [tool.ruff]
 line-length = 120
