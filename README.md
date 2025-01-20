@@ -14,14 +14,8 @@ We compute the smallest enclosing circle/ball for a set of points.
 points = np.array([[2.0, 4.0], [0, 0], [2.5, 2.0]])
 
 # compute the circle, pick any solver supporting conic constraints
-circle = min_circle_cvx(points, solver="CLARABEL")
+radius, centre = min_circle_cvx(points, solver="CLARABEL")
 
-# display the points & the circle
-fig = create_figure()
-fig.add_trace(circle.scatter())
-fig.add_trace(circle.center.scatter())
-fig.add_trace(Cloud(points).scatter(name="Cloud"))
-fig.show()
 
 ```
 
