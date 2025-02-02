@@ -22,17 +22,9 @@ dev = [
     "pre-commit>=4.0.1",
     "kaleido==0.2.1",
     "mosek==10.2.1",
-    "hexaly",
     "matplotlib>=3.10.0",
     "plotly>=5.24.1",
 ]
-
-[tool.uv.sources]
-hexaly = { index = "hexaly" }
-
-[[tool.uv.index]]
-name = "hexaly"
-url = "https://pip.hexaly.com"
 
 [tool.ruff]
 line-length = 120
