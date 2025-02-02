@@ -178,7 +178,6 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
-    { name = "hexaly" },
     { name = "kaleido" },
     { name = "matplotlib" },
     { name = "mosek" },
@@ -197,10 +196,9 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "hexaly", index = "https://pip.hexaly.com/" },
     { name = "kaleido", specifier = "==0.2.1" },
     { name = "matplotlib", specifier = ">=3.10.0" },
-    { name = "mosek", specifier = "==10.2.1" },
+    { name = "mosek", specifier = "==10.2.15" },
     { name = "plotly", specifier = ">=5.24.1" },
     { name = "pre-commit", specifier = ">=4.0.1" },
     { name = "pytest", specifier = ">=8.3.4" },
@@ -314,19 +312,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/fc/a8/4bf98840ff89fcc188470b59daec57322178bf36d2f4f756cd19a42a826b/fonttools-4.55.3-cp313-cp313-win32.whl", hash = "sha256:8c5ec45428edaa7022f1c949a632a6f298edc7b481312fc7dc258921e9399628", size = 2160178 },
     { url = "https://files.pythonhosted.org/packages/e6/57/4cc35004605416df3225ff362f3455cf09765db00df578ae9e46d0fefd23/fonttools-4.55.3-cp313-cp313-win_amd64.whl", hash = "sha256:11e5de1ee0d95af4ae23c1a138b184b7f06e0b6abacabf1d0db41c90b03d834b", size = 2206102 },
     { url = "https://files.pythonhosted.org/packages/99/3b/406d17b1f63e04a82aa621936e6e1c53a8c05458abd66300ac85ea7f9ae9/fonttools-4.55.3-py3-none-any.whl", hash = "sha256:f412604ccbeee81b091b420272841e5ec5ef68967a9790e80bffd0e30b8e2977", size = 1111638 },
-]
-
-[[package]]
-name = "hexaly"
-version = "13.0.20241205"
-source = { registry = "https://pip.hexaly.com/" }
-wheels = [
-    { url = "https://pip.hexaly.com/hexaly/hexaly-13.0.20241205-py2.py3.py27.py36.py37.py38.py39.py310.py311.py312.py313-none-linux_aarch64.whl" },
-    { url = "https://pip.hexaly.com/hexaly/hexaly-13.0.20241205-py2.py3.py27.py36.py37.py38.py39.py310.py311.py312.py313-none-linux_x86_64.whl" },
-    { url = "https://pip.hexaly.com/hexaly/hexaly-13.0.20241205-py2.py3.py27.py36.py37.py38.py39.py310.py311.py312.py313-none-macosx_10_11_x86_64.whl" },
-    { url = "https://pip.hexaly.com/hexaly/hexaly-13.0.20241205-py2.py3.py27.py36.py37.py38.py39.py310.py311.py312.py313-none-macosx_11_0_arm64.whl" },
-    { url = "https://pip.hexaly.com/hexaly/hexaly-13.0.20241205-py2.py3.py27.py36.py37.py38.py39.py310.py311.py312.py313-none-win32.whl" },
-    { url = "https://pip.hexaly.com/hexaly/hexaly-13.0.20241205-py2.py3.py27.py36.py37.py38.py39.py310.py311.py312.py313-none-win_amd64.whl" },
 ]
 
 [[package]]
@@ -501,17 +486,17 @@ wheels = [
 
 [[package]]
 name = "mosek"
-version = "10.2.1"
+version = "10.2.15"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "numpy" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f6/b2/67425cb75c3fa2d72e41a9c2499e05d04c615123f9851223254c74527c65/Mosek-10.2.1-cp37-abi3-macosx_10_15_x86_64.whl", hash = "sha256:32330c98b5c4dbae85269172eb3f50e7f98da62f48fc22724132215365ae2dde", size = 14503084 },
-    { url = "https://files.pythonhosted.org/packages/bf/6f/ff96d09f74ff51f48f3f2631953dba8ca535b31663708288075c3b9f0ffc/Mosek-10.2.1-cp37-abi3-manylinux2014_x86_64.whl", hash = "sha256:0fda0c5105f7a1e911a0375247eb3faac0a1103ece69281b2792df10404d61ec", size = 15075322 },
-    { url = "https://files.pythonhosted.org/packages/e2/e3/334e9caf901c70314736724ed8e6cfc5c27d27353f47c32a6a9d5edd3f5b/Mosek-10.2.1-cp37-abi3-manylinux_2_29_aarch64.whl", hash = "sha256:40116af736538fffbff10cb27a2574ac9ebb130bb071a78ecfeb6e912e4ff2e2", size = 10405066 },
-    { url = "https://files.pythonhosted.org/packages/fe/f4/cb577c00b60b8090df74aa47b65966d033e455debd1fc4f8d607a9b5e996/Mosek-10.2.1-cp37-abi3-win_amd64.whl", hash = "sha256:214e38686d7637d673f3bef8aff1caade60e53a72a1fd4543c3be3bf304489f5", size = 19494364 },
-    { url = "https://files.pythonhosted.org/packages/70/9f/7933c008a982a49841279a6a93445243b975c0d4f32a4eb5cd1bbf7c58da/Mosek-10.2.1-cp38-abi3-macosx_11_0_arm64.whl", hash = "sha256:8cced1ae2e4951552da708d574bca4aef2c43d6f15fe1babc43bfe73989648c5", size = 7812691 },
+    { url = "https://files.pythonhosted.org/packages/a6/31/b1bf61d2e97952587281767cd7192ce18fb54740262489c7ed733c8be6b6/Mosek-10.2.15-cp37-abi3-macosx_10_15_x86_64.whl", hash = "sha256:f77dc185de993fb3f82f003e1bd1a7a8f3e896f06cb3b18e5ff7d8f07bfed7f3", size = 14517522 },
+    { url = "https://files.pythonhosted.org/packages/e5/08/7fb4efc11dc15f848baeee5937ec53152bc0dda3cd20b39851d90195d273/Mosek-10.2.15-cp37-abi3-manylinux2014_x86_64.whl", hash = "sha256:cc0ea9f8e221c220cb04a329d5f2b42eebd48f588885e4834850cb7d9cc09c34", size = 15695889 },
+    { url = "https://files.pythonhosted.org/packages/20/79/fbed47f4b04582ca51a90970c6f734d648c00b7d936f4c837c814357fd94/Mosek-10.2.15-cp37-abi3-manylinux_2_29_aarch64.whl", hash = "sha256:533f4fd9a5bcff724dde0561176996e974f60b491c19b82f22839ffe6538e04d", size = 10873279 },
+    { url = "https://files.pythonhosted.org/packages/af/2a/dd58a6ce3c17a6f18a08b4751d70a2106e35b1ff532b0f00a3c26e8b4258/Mosek-10.2.15-cp37-abi3-win_amd64.whl", hash = "sha256:cb88fadfd2d8a48404bcd98327f3904d2862f933935d543fe3fc38cf21120e1e", size = 20048200 },
+    { url = "https://files.pythonhosted.org/packages/0a/d3/d8461d7e772a903191d333753a7114f4a3f47fb574a217c4e9a1cd107dd1/Mosek-10.2.15-cp38-abi3-macosx_11_0_arm64.whl", hash = "sha256:efb8fdde6961c456de10523efa1561ac69506ed81597b5a32bfd435d2b9bb28b", size = 8254201 },
 ]
 
 [[package]]
