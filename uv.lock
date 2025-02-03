@@ -178,7 +178,6 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
-    { name = "hexaly" },
     { name = "kaleido" },
     { name = "matplotlib" },
     { name = "mosek" },
@@ -197,7 +196,6 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "hexaly", index = "https://pip.hexaly.com/" },
     { name = "kaleido", specifier = "==0.2.1" },
     { name = "matplotlib", specifier = ">=3.10.0" },
     { name = "mosek", specifier = "==10.2.1" },
@@ -314,19 +312,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/fc/a8/4bf98840ff89fcc188470b59daec57322178bf36d2f4f756cd19a42a826b/fonttools-4.55.3-cp313-cp313-win32.whl", hash = "sha256:8c5ec45428edaa7022f1c949a632a6f298edc7b481312fc7dc258921e9399628", size = 2160178 },
     { url = "https://files.pythonhosted.org/packages/e6/57/4cc35004605416df3225ff362f3455cf09765db00df578ae9e46d0fefd23/fonttools-4.55.3-cp313-cp313-win_amd64.whl", hash = "sha256:11e5de1ee0d95af4ae23c1a138b184b7f06e0b6abacabf1d0db41c90b03d834b", size = 2206102 },
     { url = "https://files.pythonhosted.org/packages/99/3b/406d17b1f63e04a82aa621936e6e1c53a8c05458abd66300ac85ea7f9ae9/fonttools-4.55.3-py3-none-any.whl", hash = "sha256:f412604ccbeee81b091b420272841e5ec5ef68967a9790e80bffd0e30b8e2977", size = 1111638 },
-]
-
-[[package]]
-name = "hexaly"
-version = "13.0.20241205"
-source = { registry = "https://pip.hexaly.com/" }
-wheels = [
-    { url = "https://pip.hexaly.com/hexaly/hexaly-13.0.20241205-py2.py3.py27.py36.py37.py38.py39.py310.py311.py312.py313-none-linux_aarch64.whl" },
-    { url = "https://pip.hexaly.com/hexaly/hexaly-13.0.20241205-py2.py3.py27.py36.py37.py38.py39.py310.py311.py312.py313-none-linux_x86_64.whl" },
-    { url = "https://pip.hexaly.com/hexaly/hexaly-13.0.20241205-py2.py3.py27.py36.py37.py38.py39.py310.py311.py312.py313-none-macosx_10_11_x86_64.whl" },
-    { url = "https://pip.hexaly.com/hexaly/hexaly-13.0.20241205-py2.py3.py27.py36.py37.py38.py39.py310.py311.py312.py313-none-macosx_11_0_arm64.whl" },
-    { url = "https://pip.hexaly.com/hexaly/hexaly-13.0.20241205-py2.py3.py27.py36.py37.py38.py39.py310.py311.py312.py313-none-win32.whl" },
-    { url = "https://pip.hexaly.com/hexaly/hexaly-13.0.20241205-py2.py3.py27.py36.py37.py38.py39.py310.py311.py312.py313-none-win_amd64.whl" },
 ]
 
 [[package]]
