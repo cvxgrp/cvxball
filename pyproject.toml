@@ -50,3 +50,6 @@ DEP002 = ["clarabel"]
 
 [tool.bandit]
 exclude_dirs = ["tests"]
+
+[project.scripts]
+server = "cvx.ball.server:start_server"
