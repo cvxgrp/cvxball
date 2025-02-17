@@ -1,0 +1,12 @@
+#https://stackoverflow.com/questions/28097064/dockerignore-ignore-everything-except-a-file-and-the-dockerfile
+
+# Ignore Everything
+**
+
+!pyproject.toml
+!uv.lock
+!README.md
+!src/cvx/ball
+
+**/__pycache__
+**/*.pyc

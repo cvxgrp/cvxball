@@ -98,7 +98,7 @@ class NumpyServer(fl.FlightServerBase):
         return stream
 
     @classmethod
-    def start(cls, port=5008, logger=None, **kwargs):  # pragma: no cover
+    def start(cls, host="127.0.0.1", port=5008, logger=None, **kwargs):  # pragma: no cover
         """
         Start the server with the specified port and logger.
 
@@ -107,7 +107,7 @@ class NumpyServer(fl.FlightServerBase):
         :param kwargs: Additional arguments passed to the constructor.
         """
         logger = logger or loguru.logger  # If no logger is provided, use loguru's default logger.
-        server = cls("127.0.0.1", port=port, logger=logger, **kwargs)  # Instantiate the server.
+        server = cls(host=host, port=port, logger=logger, **kwargs)  # Instantiate the server.
         server.logger.info(f"Starting {cls} Flight server on port {port}...")  # Log the server start.
         server.serve()  # Start the server to handle incoming requests.
 

@@ -7,11 +7,11 @@ from cvx.ball.server import BallServer
 
 def main():
     # Connect to the server
-    client = fl.connect("grpc+tcp://127.0.0.1:5008")
+    client = fl.connect("grpc+tcp://127.0.0.1:8815")
 
     # Example data
     # The server is expecting a dictionary of numpy arrays
-    data = {"input": np.random.randn(20, 4)}
+    data = {"input": np.random.randn(2000, 10)}
 
     # The server will return a dictionary of numpy arrays
     results = BallServer.compute(client, data=data)
