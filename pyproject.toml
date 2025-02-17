@@ -53,3 +53,4 @@ exclude_dirs = ["tests"]
 
 [project.scripts]
 server = "cvx.ball.server:start_server"
+client = "cvx.ball.client:main"
