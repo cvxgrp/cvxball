@@ -11,7 +11,6 @@ dependencies = [
     # Install solvers
     "clarabel>=0.9.0",
     "pyarrow>=19.0.0",
-    "polars>=1.22.0",
     "loguru>=0.7.3",
 ]
 
@@ -53,5 +52,5 @@ DEP002 = ["clarabel"]
 exclude_dirs = ["tests"]
 
 [project.scripts]
-server = "cvx.ball.server:start_server"
+server = "cvx.ball.server:BallServer.start"
 client = "example.client:main"

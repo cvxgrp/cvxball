@@ -1,6 +1,6 @@
-import logging
 import threading
 
+import loguru
 import numpy as np
 import pyarrow.flight as fl
 
@@ -9,7 +9,7 @@ class NumpyServer(fl.FlightServerBase):
     def __init__(self, host, port, logger=None, **kwargs):
         uri = f"grpc+tcp://{host}:{port}"
         super().__init__(uri, **kwargs)
-        self._logger = logger or logging.getLogger(__name__)
+        self._logger = logger or loguru.logger
         self._storage = {}  # Dictionary to store uploaded data
         self._lock = threading.Lock()  # Lock for thread safety
 
@@ -18,10 +18,8 @@ class NumpyServer(fl.FlightServerBase):
         return self._logger
 
     @staticmethod
-    def _handle_arrow_table(table, logger=None):
+    def _handle_arrow_table(table, logger) -> dict[str, np.ndarray]:
         # Directly work with the Arrow Table (no Polars)
-
-        logger = logger or logging.getLogger(__name__)
         logger.info(f"Handling Arrow Table: {table}")
         logger.info(f"Names: {table.schema.names}")
 
@@ -90,8 +88,8 @@ class NumpyServer(fl.FlightServerBase):
         return stream
 
     @classmethod
-    def start(cls, port=5006, logger=None, **kwargs):
-        logger = logger or logging.getLogger(__name__)  # pragma: no cover
+    def start(cls, port=5008, logger=None, **kwargs):
+        logger = logger or loguru.logger  # pragma: no cover
         server = cls("127.0.0.1", port=port, logger=logger, **kwargs)  # pragma: no cover
         server.logger.info(f"Starting {cls} Flight server on port {port}...")  # pragma: no cover
         server.serve()  # pragma: no cover

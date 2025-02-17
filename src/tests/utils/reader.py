@@ -1,4 +1,4 @@
-from typing import Iterator, List
+from typing import List
 
 import pyarrow as pa
 from pyarrow.flight import FlightStreamReader
@@ -54,12 +54,12 @@ class TableReader(FlightStreamReader):
         """
         return self._table
 
-    def __iter__(self) -> Iterator[pa.RecordBatch]:
-        """
-        Make the reader iterable.
-        Allows using the reader in a for loop.
-
-        Returns:
-            Iterator[pa.RecordBatch]: The iterator object
-        """
-        return self
+    # def __iter__(self) -> Iterator[pa.RecordBatch]:
+    #     """
+    #     Make the reader iterable.
+    #     Allows using the reader in a for loop.
+    #
+    #     Returns:
+    #         Iterator[pa.RecordBatch]: The iterator object
+    #     """
+    #     return self

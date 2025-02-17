@@ -1,12 +1,12 @@
+import numpy as np
 import pyarrow as pa
-from loguru import logger
 
-from cvx.ball.numpy_server import NumpyServer
-from cvx.ball.solver import min_circle_cvx
+from .numpy_server import NumpyServer
+from .solver import min_circle_cvx
 
 
 class BallServer(NumpyServer):
-    def f(self, matrices):
+    def f(self, matrices: dict[str, np.ndarray]) -> pa.Table:
         self.logger.info(f"Matrices: {matrices.keys()}")
         matrix = matrices["input"]
 
@@ -21,7 +21,3 @@ class BallServer(NumpyServer):
         midpoint_array = pa.array([midpoint], type=pa.list_(pa.float64()))
         result_table = pa.table({"radius": radius_array, "midpoint": midpoint_array})
         return result_table
-
-
-def start_server(port=5006):
-    BallServer.start(port=port, logger=logger)  # pragma: no cover

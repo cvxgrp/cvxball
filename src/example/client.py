@@ -35,7 +35,7 @@ def compute(client, data, logger=None):
 
 def main():
     # Connect to the server
-    client = fl.connect("grpc+tcp://127.0.0.1:5006")
+    client = fl.connect("grpc+tcp://127.0.0.1:5008")
     logger.info("Connected to the server.")
 
     # Example data
