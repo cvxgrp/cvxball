@@ -47,6 +47,7 @@ packages = ["src/cvx"]
 
 [tool.deptry.per_rule_ignores]
 DEP002 = ["clarabel"]
+DEP003 = ["cvx"]
 
 [tool.bandit]
 exclude_dirs = ["tests"]
