@@ -30,7 +30,7 @@ jobs:
 
       - uses: cvxgrp/.github/actions/coverage@v2.2.4
         with:
-          source-folder: 'src/pyhrp'
+          source-folder: 'src/cvx'
           tests-folder: 'src/tests'
 
   jupyter:
