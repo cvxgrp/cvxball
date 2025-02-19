@@ -1,43 +1,36 @@
 import marimo
 
-__generated_with = "0.9.27"
+__generated_with = "0.11.6"
 app = marimo.App()
 
 
 @app.cell
-def __(mo):
-    mo.md(
-        r"""
-        # Second order cones
-        """
-    )
+def _(mo):
+    mo.md(r"""# Second order cones""")
     return
 
 
 @app.cell
-def __(mo):
+def _(mo):
     mo.md(
         r"""
         cvxpy supports second order cones, see:
         https://www.cvxpy.org/examples/basic/socp.html
-
         """
     )
     return
 
 
 @app.cell
-def __(mo):
+def _(mo):
     mo.md(
-        r"""
-        The discussion in this notebook follows https://github.com/MOSEK/Tutorials/blob/master/minimum-ellipsoid/minimum-ellipsoid.ipynb
-        """
+        r"""The discussion in this notebook follows https://github.com/MOSEK/Tutorials/blob/master/minimum-ellipsoid/minimum-ellipsoid.ipynb"""
     )
     return
 
 
 @app.cell
-def __(mo):
+def _(mo):
     mo.md(
         r"""
         We are computing the smallest sphere enclosing a set of points. We are introducing
@@ -50,17 +43,13 @@ def __(mo):
 
 
 @app.cell
-def __(mo):
-    mo.md(
-        r"""
-        ## A random set of points
-        """
-    )
+def _(mo):
+    mo.md(r"""## A random set of points""")
     return
 
 
 @app.cell
-def __():
+def _():
     import random
 
     import matplotlib.patches as mpatches
@@ -92,7 +81,7 @@ def __():
 
 
 @app.cell
-def __(mo):
+def _(mo):
     mo.md(
         r"""
         ## The problem
@@ -129,14 +118,13 @@ def __(mo):
 
         where $Q^{(n+1)} = \left\{ (t,x) ∈ \mathbb{R} \times \mathbb{R}^n : \|x\|_2  \leq t \right\}$
         is the $(n+1)$ dimensional second-order cone.
-
         """
     )
     return
 
 
 @app.cell
-def __(mo):
+def _(mo):
     mo.md(
         r"""
         ### With n constraints: Distance from center for each point
@@ -148,7 +136,7 @@ def __(mo):
 
 
 @app.cell
-def __():
+def _():
     import cvxpy as cp
 
     def min_circle_cvx_norm(points, **kwargs):
@@ -168,7 +156,7 @@ def __():
 
 
 @app.cell
-def __(min_circle_cvx_norm, p):
+def _(min_circle_cvx_norm, p):
     r0, p0 = min_circle_cvx_norm(p, solver="CLARABEL")
     print("r0^* = ", r0)
     print("p0^* = ", p0)
@@ -176,13 +164,13 @@ def __(min_circle_cvx_norm, p):
 
 
 @app.cell
-def __(p, p0, plot_points, r0):
+def _(p, p0, plot_points, r0):
     plot_points(p, p0, r0)
     return
 
 
 @app.cell
-def __(mo):
+def _(mo):
     mo.md(
         r"""
         ### With n constraints: One second-order cone for each point
@@ -195,7 +183,7 @@ def __(mo):
 
 
 @app.cell
-def __(cp):
+def _(cp):
     def min_circle_cvx_socs(points, **kwargs):
         # cvxpy variable for the radius
         r = cp.Variable(shape=1, name="Radius")
@@ -213,7 +201,7 @@ def __(cp):
 
 
 @app.cell
-def __(min_circle_cvx_socs, p):
+def _(min_circle_cvx_socs, p):
     r0_1, p0_1 = min_circle_cvx_socs(p, solver="CLARABEL")
     print("r0^* = ", r0_1)
     print("p0^* = ", p0_1)
@@ -221,13 +209,13 @@ def __(min_circle_cvx_socs, p):
 
 
 @app.cell
-def __(p, p0_1, plot_points, r0_1):
+def _(p, p0_1, plot_points, r0_1):
     plot_points(p, p0_1, r0_1)
     return
 
 
 @app.cell
-def __(mo):
+def _(mo):
     mo.md(
         r"""
         ### With one constraint: Getting rid of loop
@@ -262,7 +250,7 @@ def __(mo):
 
 
 @app.cell
-def __(mo):
+def _(mo):
     mo.md(
         r"""
         We can take over the idea for cvxpy and can get away with a single call of 'cp.SOC'.
@@ -274,7 +262,7 @@ def __(mo):
 
 
 @app.cell
-def __(cp, np):
+def _(cp, np):
     def min_circle_cvx_soc(points, **kwargs):
         # cvxpy variable for the radius
         r = cp.Variable(shape=1, name="Radius")
@@ -298,7 +286,7 @@ def __(cp, np):
 
 
 @app.cell
-def __(min_circle_cvx_soc, p):
+def _(min_circle_cvx_soc, p):
     r0_2, p0_2 = min_circle_cvx_soc(p, solver="CLARABEL")
     print("r0^* = ", r0_2)
     print("p0^* = ", p0_2)
@@ -306,13 +294,13 @@ def __(min_circle_cvx_soc, p):
 
 
 @app.cell
-def __(p, p0_2, plot_points, r0_2):
+def _(p, p0_2, plot_points, r0_2):
     plot_points(p, p0_2, r0_2)
     return
 
 
 @app.cell
-def __(mo):
+def _(mo):
     mo.md(
         r"""
         ## Benchmark
@@ -328,41 +316,37 @@ def __(mo):
 
 
 @app.cell
-def __(np):
+def _(np):
     p_1 = np.random.randn(10000, 5)
     return (p_1,)
 
 
 @app.cell
-def __(min_circle_cvx_norm, p_1):
+def _(min_circle_cvx_norm, p_1):
     min_circle_cvx_norm(p_1, solver="CLARABEL")
     return
 
 
 @app.cell
-def __(min_circle_cvx_socs, p_1):
+def _(min_circle_cvx_socs, p_1):
     min_circle_cvx_socs(p_1, solver="CLARABEL")
     return
 
 
 @app.cell
-def __(min_circle_cvx_soc, p_1):
+def _(min_circle_cvx_soc, p_1):
     min_circle_cvx_soc(p_1, solver="CLARABEL")
     return
 
 
 @app.cell
-def __(mo):
-    mo.md(
-        r"""
-        ## Summary
-        """
-    )
+def _(mo):
+    mo.md(r"""## Summary""")
     return
 
 
 @app.cell
-def __(mo):
+def _(mo):
     mo.md(
         r"""
         Avoiding the loop explicitly constructing a second-order cone for each
@@ -373,7 +357,7 @@ def __(mo):
 
 
 @app.cell
-def __():
+def _():
     import marimo as mo
 
     return (mo,)
