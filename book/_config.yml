@@ -11,7 +11,7 @@ parse:
     - linkify
     - dollarmath
   myst_substitutions:
-    book_url: https://tschm.github.io/pyhrp
+    book_url: https://www.cvxgrp.org/cvxball
 
 # needed for plotly
 sphinx:
