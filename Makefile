@@ -32,3 +32,7 @@ help: ## Show this help message
 jupyter: install ## Install a run a Jupyter Lab server
 	uv pip install jupyterlab
 	uv run jupyter lab
+
+marimo: install ## Start a Marimo server
+	@uv pip install marimo
+	@uv run marimo edit notebooks
