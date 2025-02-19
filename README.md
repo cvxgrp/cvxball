@@ -1,4 +1,4 @@
-# cvxball
+# [cvxball](https://www.cvxgrp.org/cvxball/book)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![CI](https://github.com/cvxgrp/cvxball/actions/workflows/ci.yml/badge.svg)](https://github.com/cvxgrp/cvxball/actions/workflows/ci.yml)
