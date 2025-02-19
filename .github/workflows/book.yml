@@ -20,7 +20,7 @@ jobs:
 
       - uses: cvxgrp/.github/actions/pdoc@v2.2.4
         with:
-          source-folder: 'src/pyhrp'
+          source-folder: 'src/cvx'
 
   test:
     runs-on: "ubuntu-latest"
