@@ -1,12 +1,11 @@
 import numpy as np
-import pyarrow.flight as fl
 from loguru import logger
 from np.flight import Client
 
 
 def main():
     # Connect to the server
-    client = Client(fl.connect("grpc+tcp://127.0.0.1:8815"))
+    client = Client("grpc+tcp://127.0.0.1:8815")
 
     # Example data
     # The server is expecting a dictionary of numpy arrays
