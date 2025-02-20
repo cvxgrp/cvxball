@@ -9,7 +9,8 @@ dependencies = [
     "cvxpy-base>=1.6.0",
     "numpy>=2",
     "clarabel>=0.10.0",
-    "numpy-flight>=0.0.6",
+    "numpy-flight>=0.0.7",
+    "pydantic>=2.10.6",
 ]
 
 [project.urls]
