@@ -31,6 +31,39 @@
             <h2>API Documentation</h2>
                 <ul class="memberlist">
             <li>
+                    <a class="class" href="#ResultData">ResultData</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="variable" href="#ResultData.radius">radius</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ResultData.midpoint">midpoint</a>
+                        </li>
+                        <li>
+                                <a class="variable" href="#ResultData.points">points</a>
+                        </li>
+                        <li>
+                                <a class="class" href="#ResultData.Config">ResultData.Config</a>
+                                        <ul class="memberlist">
+                                    <li>
+                                            <a class="variable" href="#ResultData.Config.arbitrary_types_allowed">arbitrary_types_allowed</a>
+                                    </li>
+                                    <li>
+                                            <a class="variable" href="#ResultData.Config.validate_assignment">validate_assignment</a>
+                                    </li>
+                                    <li>
+                                            <a class="variable" href="#ResultData.Config.frozen">frozen</a>
+                                    </li>
+                            </ul>
+
+                        </li>
+                        <li>
+                                <a class="variable" href="#ResultData.model_config">model_config</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
                     <a class="function" href="#min_circle_cvx">min_circle_cvx</a>
             </li>
     </ul>
@@ -56,30 +89,204 @@
 
                         <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos"> 1</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">cvxpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">cp</span>
 </span><span id="L-2"><a href="#L-2"><span class="linenos"> 2</span></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a>
+</span><span id="L-3"><a href="#L-3"><span class="linenos"> 3</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span><span class="p">,</span> <span class="n">Field</span>
 </span><span id="L-4"><a href="#L-4"><span class="linenos"> 4</span></a>
-</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a><span class="k">def</span><span class="w"> </span><span class="nf">min_circle_cvx</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a>    <span class="c1"># cvxpy variable for the radius</span>
-</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a>    <span class="n">r</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Radius&quot;</span><span class="p">)</span>
-</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>    <span class="c1"># cvxpy variable for the midpoint</span>
-</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Midpoint&quot;</span><span class="p">)</span>
-</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>    <span class="n">objective</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>        <span class="n">cp</span><span class="o">.</span><span class="n">SOC</span><span class="p">(</span>
-</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>            <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
-</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>            <span class="n">points</span> <span class="o">-</span> <span class="n">cp</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">x</span><span class="p">),</span>
-</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>            <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>        <span class="p">)</span>
-</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a>    <span class="p">]</span>
-</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>
-</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>    <span class="n">problem</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">,</span> <span class="n">constraints</span><span class="o">=</span><span class="n">constraints</span><span class="p">)</span>
-</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>    <span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>
-</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>    <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="o">.</span><span class="n">value</span>
+</span><span id="L-5"><a href="#L-5"><span class="linenos"> 5</span></a>
+</span><span id="L-6"><a href="#L-6"><span class="linenos"> 6</span></a><span class="k">class</span><span class="w"> </span><span class="nc">ResultData</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="L-7"><a href="#L-7"><span class="linenos"> 7</span></a>    <span class="n">radius</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Radius of the ball&quot;</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="L-8"><a href="#L-8"><span class="linenos"> 8</span></a>    <span class="n">midpoint</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Midpoint of the ball&quot;</span><span class="p">)</span>
+</span><span id="L-9"><a href="#L-9"><span class="linenos"> 9</span></a>    <span class="n">points</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Points of the ball&quot;</span><span class="p">)</span>
+</span><span id="L-10"><a href="#L-10"><span class="linenos">10</span></a>
+</span><span id="L-11"><a href="#L-11"><span class="linenos">11</span></a>    <span class="k">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">:</span>
+</span><span id="L-12"><a href="#L-12"><span class="linenos">12</span></a>        <span class="n">arbitrary_types_allowed</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Allow numpy arrays in Pydantic</span>
+</span><span id="L-13"><a href="#L-13"><span class="linenos">13</span></a>        <span class="n">validate_assignment</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Validate on attribute assignment</span>
+</span><span id="L-14"><a href="#L-14"><span class="linenos">14</span></a>        <span class="n">frozen</span> <span class="o">=</span> <span class="kc">True</span>
+</span><span id="L-15"><a href="#L-15"><span class="linenos">15</span></a>
+</span><span id="L-16"><a href="#L-16"><span class="linenos">16</span></a>
+</span><span id="L-17"><a href="#L-17"><span class="linenos">17</span></a><span class="k">def</span><span class="w"> </span><span class="nf">min_circle_cvx</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="L-18"><a href="#L-18"><span class="linenos">18</span></a>    <span class="c1"># cvxpy variable for the radius</span>
+</span><span id="L-19"><a href="#L-19"><span class="linenos">19</span></a>    <span class="n">r</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Radius&quot;</span><span class="p">)</span>
+</span><span id="L-20"><a href="#L-20"><span class="linenos">20</span></a>    <span class="c1"># cvxpy variable for the midpoint</span>
+</span><span id="L-21"><a href="#L-21"><span class="linenos">21</span></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Midpoint&quot;</span><span class="p">)</span>
+</span><span id="L-22"><a href="#L-22"><span class="linenos">22</span></a>    <span class="n">objective</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</span><span id="L-23"><a href="#L-23"><span class="linenos">23</span></a>    <span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="L-24"><a href="#L-24"><span class="linenos">24</span></a>        <span class="n">cp</span><span class="o">.</span><span class="n">SOC</span><span class="p">(</span>
+</span><span id="L-25"><a href="#L-25"><span class="linenos">25</span></a>            <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+</span><span id="L-26"><a href="#L-26"><span class="linenos">26</span></a>            <span class="n">points</span> <span class="o">-</span> <span class="n">cp</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">x</span><span class="p">),</span>
+</span><span id="L-27"><a href="#L-27"><span class="linenos">27</span></a>            <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span><span id="L-28"><a href="#L-28"><span class="linenos">28</span></a>        <span class="p">)</span>
+</span><span id="L-29"><a href="#L-29"><span class="linenos">29</span></a>    <span class="p">]</span>
+</span><span id="L-30"><a href="#L-30"><span class="linenos">30</span></a>
+</span><span id="L-31"><a href="#L-31"><span class="linenos">31</span></a>    <span class="n">problem</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">,</span> <span class="n">constraints</span><span class="o">=</span><span class="n">constraints</span><span class="p">)</span>
+</span><span id="L-32"><a href="#L-32"><span class="linenos">32</span></a>    <span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="L-33"><a href="#L-33"><span class="linenos">33</span></a>
+</span><span id="L-34"><a href="#L-34"><span class="linenos">34</span></a>    <span class="c1"># return r.value[0], x.value</span>
+</span><span id="L-35"><a href="#L-35"><span class="linenos">35</span></a>    <span class="k">return</span> <span class="n">ResultData</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">midpoint</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><span class="n">points</span><span class="p">)</span>
 </span></pre></div>
 
 
             </section>
+                <section id="ResultData">
+                            <input id="ResultData-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ResultData</span><wbr>(<span class="base">pydantic.main.BaseModel</span>):
+
+                <label class="view-source-button" for="ResultData-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#ResultData"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="ResultData-7"><a href="#ResultData-7"><span class="linenos"> 7</span></a><span class="k">class</span><span class="w"> </span><span class="nc">ResultData</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+</span><span id="ResultData-8"><a href="#ResultData-8"><span class="linenos"> 8</span></a>    <span class="n">radius</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Radius of the ball&quot;</span><span class="p">,</span> <span class="n">ge</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span><span id="ResultData-9"><a href="#ResultData-9"><span class="linenos"> 9</span></a>    <span class="n">midpoint</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Midpoint of the ball&quot;</span><span class="p">)</span>
+</span><span id="ResultData-10"><a href="#ResultData-10"><span class="linenos">10</span></a>    <span class="n">points</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Points of the ball&quot;</span><span class="p">)</span>
+</span><span id="ResultData-11"><a href="#ResultData-11"><span class="linenos">11</span></a>
+</span><span id="ResultData-12"><a href="#ResultData-12"><span class="linenos">12</span></a>    <span class="k">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">:</span>
+</span><span id="ResultData-13"><a href="#ResultData-13"><span class="linenos">13</span></a>        <span class="n">arbitrary_types_allowed</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Allow numpy arrays in Pydantic</span>
+</span><span id="ResultData-14"><a href="#ResultData-14"><span class="linenos">14</span></a>        <span class="n">validate_assignment</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Validate on attribute assignment</span>
+</span><span id="ResultData-15"><a href="#ResultData-15"><span class="linenos">15</span></a>        <span class="n">frozen</span> <span class="o">=</span> <span class="kc">True</span>
+</span></pre></div>
+
+
+            <div class="docstring"><p>Usage docs: <a href="https://docs.pydantic.dev/2.10/concepts/models/">https://docs.pydantic.dev/2.10/concepts/models/</a></p>
+
+<p>A base class for creating Pydantic models.</p>
+
+<p>Attributes:
+    __class_vars__: The names of the class variables defined on the model.
+    __private_attributes__: Metadata about the private attributes of the model.
+    __signature__: The synthesized <code><a href="#ResultData.__init__">__init__</a></code> [<code>Signature</code>][inspect.Signature] of the model.</p>
+
+<pre><code>__pydantic_complete__: Whether model building is completed, or if there are still undefined fields.
+__pydantic_core_schema__: The core schema of the model.
+__pydantic_custom_init__: Whether the model has a custom `__init__` function.
+__pydantic_decorators__: Metadata containing the decorators defined on the model.
+    This replaces `Model.__validators__` and `Model.__root_validators__` from Pydantic V1.
+__pydantic_generic_metadata__: Metadata for generic models; contains data used for a similar purpose to
+    __args__, __origin__, __parameters__ in typing-module generics. May eventually be replaced by these.
+__pydantic_parent_namespace__: Parent namespace of the model, used for automatic rebuilding of models.
+__pydantic_post_init__: The name of the post-init method for the model, if defined.
+__pydantic_root_model__: Whether the model is a [`RootModel`][pydantic.root_model.RootModel].
+__pydantic_serializer__: The `pydantic-core` `SchemaSerializer` used to dump instances of the model.
+__pydantic_validator__: The `pydantic-core` `SchemaValidator` used to validate instances of the model.
+
+__pydantic_fields__: A dictionary of field names and their corresponding [`FieldInfo`][pydantic.fields.FieldInfo] objects.
+__pydantic_computed_fields__: A dictionary of computed field names and their corresponding [`ComputedFieldInfo`][pydantic.fields.ComputedFieldInfo] objects.
+
+__pydantic_extra__: A dictionary containing extra values, if [`extra`][pydantic.config.ConfigDict.extra]
+    is set to `'allow'`.
+__pydantic_fields_set__: The names of fields explicitly set during instantiation.
+__pydantic_private__: Values of private attributes set on the model instance.
+</code></pre>
+</div>
+
+
+                            <div id="ResultData.radius" class="classattr">
+                                <div class="attr variable">
+            <span class="name">radius</span><span class="annotation">: float</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ResultData.radius"></a>
+    
+    
+
+                            </div>
+                            <div id="ResultData.midpoint" class="classattr">
+                                <div class="attr variable">
+            <span class="name">midpoint</span><span class="annotation">: numpy.ndarray</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ResultData.midpoint"></a>
+    
+    
+
+                            </div>
+                            <div id="ResultData.points" class="classattr">
+                                <div class="attr variable">
+            <span class="name">points</span><span class="annotation">: numpy.ndarray</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ResultData.points"></a>
+    
+    
+
+                            </div>
+                            <div id="ResultData.model_config" class="classattr">
+                                <div class="attr variable">
+            <span class="name">model_config</span><span class="annotation">: ClassVar[pydantic.config.ConfigDict]</span>        =
+<span class="default_value">{&#39;arbitrary_types_allowed&#39;: True, &#39;frozen&#39;: True, &#39;validate_assignment&#39;: True}</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ResultData.model_config"></a>
+    
+            <div class="docstring"><p>Configuration for the model, should be a dictionary conforming to [<code>ConfigDict</code>][pydantic.config.ConfigDict].</p>
+</div>
+
+
+                            </div>
+                </section>
+                <section id="ResultData.Config">
+                            <input id="ResultData.Config-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">ResultData.Config</span>:
+
+                <label class="view-source-button" for="ResultData.Config-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#ResultData.Config"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="ResultData.Config-12"><a href="#ResultData.Config-12"><span class="linenos">12</span></a>    <span class="k">class</span><span class="w"> </span><span class="nc">Config</span><span class="p">:</span>
+</span><span id="ResultData.Config-13"><a href="#ResultData.Config-13"><span class="linenos">13</span></a>        <span class="n">arbitrary_types_allowed</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Allow numpy arrays in Pydantic</span>
+</span><span id="ResultData.Config-14"><a href="#ResultData.Config-14"><span class="linenos">14</span></a>        <span class="n">validate_assignment</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Validate on attribute assignment</span>
+</span><span id="ResultData.Config-15"><a href="#ResultData.Config-15"><span class="linenos">15</span></a>        <span class="n">frozen</span> <span class="o">=</span> <span class="kc">True</span>
+</span></pre></div>
+
+
+    
+
+                            <div id="ResultData.Config.arbitrary_types_allowed" class="classattr">
+                                <div class="attr variable">
+            <span class="name">arbitrary_types_allowed</span>        =
+<span class="default_value">True</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ResultData.Config.arbitrary_types_allowed"></a>
+    
+    
+
+                            </div>
+                            <div id="ResultData.Config.validate_assignment" class="classattr">
+                                <div class="attr variable">
+            <span class="name">validate_assignment</span>        =
+<span class="default_value">True</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ResultData.Config.validate_assignment"></a>
+    
+    
+
+                            </div>
+                            <div id="ResultData.Config.frozen" class="classattr">
+                                <div class="attr variable">
+            <span class="name">frozen</span>        =
+<span class="default_value">True</span>
+
+        
+    </div>
+    <a class="headerlink" href="#ResultData.Config.frozen"></a>
+    
+    
+
+                            </div>
+                </section>
                 <section id="min_circle_cvx">
                             <input id="min_circle_cvx-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
 <div class="attr function">
@@ -91,24 +298,25 @@
 
     </div>
     <a class="headerlink" href="#min_circle_cvx"></a>
-            <div class="pdoc-code codehilite"><pre><span></span><span id="min_circle_cvx-6"><a href="#min_circle_cvx-6"><span class="linenos"> 6</span></a><span class="k">def</span><span class="w"> </span><span class="nf">min_circle_cvx</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span id="min_circle_cvx-7"><a href="#min_circle_cvx-7"><span class="linenos"> 7</span></a>    <span class="c1"># cvxpy variable for the radius</span>
-</span><span id="min_circle_cvx-8"><a href="#min_circle_cvx-8"><span class="linenos"> 8</span></a>    <span class="n">r</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Radius&quot;</span><span class="p">)</span>
-</span><span id="min_circle_cvx-9"><a href="#min_circle_cvx-9"><span class="linenos"> 9</span></a>    <span class="c1"># cvxpy variable for the midpoint</span>
-</span><span id="min_circle_cvx-10"><a href="#min_circle_cvx-10"><span class="linenos">10</span></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Midpoint&quot;</span><span class="p">)</span>
-</span><span id="min_circle_cvx-11"><a href="#min_circle_cvx-11"><span class="linenos">11</span></a>    <span class="n">objective</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-</span><span id="min_circle_cvx-12"><a href="#min_circle_cvx-12"><span class="linenos">12</span></a>    <span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span>
-</span><span id="min_circle_cvx-13"><a href="#min_circle_cvx-13"><span class="linenos">13</span></a>        <span class="n">cp</span><span class="o">.</span><span class="n">SOC</span><span class="p">(</span>
-</span><span id="min_circle_cvx-14"><a href="#min_circle_cvx-14"><span class="linenos">14</span></a>            <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
-</span><span id="min_circle_cvx-15"><a href="#min_circle_cvx-15"><span class="linenos">15</span></a>            <span class="n">points</span> <span class="o">-</span> <span class="n">cp</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">x</span><span class="p">),</span>
-</span><span id="min_circle_cvx-16"><a href="#min_circle_cvx-16"><span class="linenos">16</span></a>            <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-</span><span id="min_circle_cvx-17"><a href="#min_circle_cvx-17"><span class="linenos">17</span></a>        <span class="p">)</span>
-</span><span id="min_circle_cvx-18"><a href="#min_circle_cvx-18"><span class="linenos">18</span></a>    <span class="p">]</span>
-</span><span id="min_circle_cvx-19"><a href="#min_circle_cvx-19"><span class="linenos">19</span></a>
-</span><span id="min_circle_cvx-20"><a href="#min_circle_cvx-20"><span class="linenos">20</span></a>    <span class="n">problem</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">,</span> <span class="n">constraints</span><span class="o">=</span><span class="n">constraints</span><span class="p">)</span>
-</span><span id="min_circle_cvx-21"><a href="#min_circle_cvx-21"><span class="linenos">21</span></a>    <span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span id="min_circle_cvx-22"><a href="#min_circle_cvx-22"><span class="linenos">22</span></a>
-</span><span id="min_circle_cvx-23"><a href="#min_circle_cvx-23"><span class="linenos">23</span></a>    <span class="k">return</span> <span class="n">r</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="o">.</span><span class="n">value</span>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="min_circle_cvx-18"><a href="#min_circle_cvx-18"><span class="linenos">18</span></a><span class="k">def</span><span class="w"> </span><span class="nf">min_circle_cvx</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span id="min_circle_cvx-19"><a href="#min_circle_cvx-19"><span class="linenos">19</span></a>    <span class="c1"># cvxpy variable for the radius</span>
+</span><span id="min_circle_cvx-20"><a href="#min_circle_cvx-20"><span class="linenos">20</span></a>    <span class="n">r</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Radius&quot;</span><span class="p">)</span>
+</span><span id="min_circle_cvx-21"><a href="#min_circle_cvx-21"><span class="linenos">21</span></a>    <span class="c1"># cvxpy variable for the midpoint</span>
+</span><span id="min_circle_cvx-22"><a href="#min_circle_cvx-22"><span class="linenos">22</span></a>    <span class="n">x</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Midpoint&quot;</span><span class="p">)</span>
+</span><span id="min_circle_cvx-23"><a href="#min_circle_cvx-23"><span class="linenos">23</span></a>    <span class="n">objective</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Minimize</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</span><span id="min_circle_cvx-24"><a href="#min_circle_cvx-24"><span class="linenos">24</span></a>    <span class="n">constraints</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="min_circle_cvx-25"><a href="#min_circle_cvx-25"><span class="linenos">25</span></a>        <span class="n">cp</span><span class="o">.</span><span class="n">SOC</span><span class="p">(</span>
+</span><span id="min_circle_cvx-26"><a href="#min_circle_cvx-26"><span class="linenos">26</span></a>            <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+</span><span id="min_circle_cvx-27"><a href="#min_circle_cvx-27"><span class="linenos">27</span></a>            <span class="n">points</span> <span class="o">-</span> <span class="n">cp</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">points</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">x</span><span class="p">),</span>
+</span><span id="min_circle_cvx-28"><a href="#min_circle_cvx-28"><span class="linenos">28</span></a>            <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+</span><span id="min_circle_cvx-29"><a href="#min_circle_cvx-29"><span class="linenos">29</span></a>        <span class="p">)</span>
+</span><span id="min_circle_cvx-30"><a href="#min_circle_cvx-30"><span class="linenos">30</span></a>    <span class="p">]</span>
+</span><span id="min_circle_cvx-31"><a href="#min_circle_cvx-31"><span class="linenos">31</span></a>
+</span><span id="min_circle_cvx-32"><a href="#min_circle_cvx-32"><span class="linenos">32</span></a>    <span class="n">problem</span> <span class="o">=</span> <span class="n">cp</span><span class="o">.</span><span class="n">Problem</span><span class="p">(</span><span class="n">objective</span><span class="o">=</span><span class="n">objective</span><span class="p">,</span> <span class="n">constraints</span><span class="o">=</span><span class="n">constraints</span><span class="p">)</span>
+</span><span id="min_circle_cvx-33"><a href="#min_circle_cvx-33"><span class="linenos">33</span></a>    <span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span id="min_circle_cvx-34"><a href="#min_circle_cvx-34"><span class="linenos">34</span></a>
+</span><span id="min_circle_cvx-35"><a href="#min_circle_cvx-35"><span class="linenos">35</span></a>    <span class="c1"># return r.value[0], x.value</span>
+</span><span id="min_circle_cvx-36"><a href="#min_circle_cvx-36"><span class="linenos">36</span></a>    <span class="k">return</span> <span class="n">ResultData</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">midpoint</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">points</span><span class="o">=</span><span class="n">points</span><span class="p">)</span>
 </span></pre></div>
 
 

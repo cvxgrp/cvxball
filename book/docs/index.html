@@ -393,7 +393,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]])</span>
 
 <span class="go"># compute the circle, pick any solver supporting conic constraints</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">radius</span><span class="p">,</span> <span class="n">centre</span> <span class="o">=</span> <span class="n">min_circle_cvx</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;CLARABEL&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">min_circle_cvx</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;CLARABEL&quot;</span><span class="p">)</span>
 
 </pre></div>
 </div>
