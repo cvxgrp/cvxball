@@ -1,5 +1,17 @@
 import cvxpy as cp
 import numpy as np
+from pydantic import BaseModel, Field
+
+
+class ResultData(BaseModel):
+    radius: float = Field(..., description="Radius of the ball", ge=0)
+    midpoint: np.ndarray = Field(..., description="Midpoint of the ball")
+    points: np.ndarray = Field(..., description="Points of the ball")
+
+    class Config:
+        arbitrary_types_allowed = True  # Allow numpy arrays in Pydantic
+        validate_assignment = True  # Validate on attribute assignment
+        frozen = True
 
 
 def min_circle_cvx(points, **kwargs):
@@ -19,4 +31,5 @@ def min_circle_cvx(points, **kwargs):
     problem = cp.Problem(objective=objective, constraints=constraints)
     problem.solve(**kwargs)
 
-    return r.value[0], x.value
+    # return r.value[0], x.value
+    return ResultData(radius=float(r.value[0]), midpoint=x.value, points=points)
