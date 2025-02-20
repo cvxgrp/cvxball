@@ -1,0 +1,77 @@
+from abc import ABC, abstractmethod
+
+import numpy as np
+from np.flight import Server
+from pydantic import BaseModel, Field, field_validator, model_validator
+
+from cvx.ball.solver import min_circle_cvx, ResultData
+
+
+class InputDataBase(BaseModel, ABC):
+    @abstractmethod
+    def compute(self):
+        return min_circle_cvx(self.points, solver=self.solver)
+
+
+class InputData(InputDataBase):
+    def compute(self) -> BaseModel:
+        return min_circle_cvx(self.points, solver=self.solver)
+
+    points: np.ndarray = Field(..., description="Input points as a numpy array")
+    solver: str = Field(
+        default="CLARABEL",
+        description="Solver to use for computation"
+    )
+
+    @field_validator("points")
+    def validate_points(cls, value: np.ndarray) -> np.ndarray:
+        """
+        Validate that the points are a 2D numpy array with shape (N, 2).
+
+        Args:
+            value: Input numpy array to validate
+
+        Returns:
+            The validated numpy array
+
+        Raises:
+            ValueError: If array dimensions are invalid
+        """
+        if not isinstance(value, np.ndarray):
+            raise ValueError("Points must be a numpy array")
+
+        if value.ndim != 2:
+            raise ValueError("Points must be a 2D array")
+
+        if value.shape[1] == 0:
+            raise ValueError("Points must have at least 1 column (x coordinates)")
+
+        if value.shape[0] == 0:
+            raise ValueError("At least 1 point is required")
+
+        if not np.isfinite(value).all():
+            raise ValueError("All point coordinates must be finite numbers")
+
+        return value
+
+    @model_validator(mode='after')
+    def validate_model(self) -> 'InputData':
+        """
+        Perform whole-model validation after individual fields are validated.
+        """
+        # Add any cross-field validation here if needed
+        return self
+
+    class Config:
+        arbitrary_types_allowed = True
+        validate_assignment = True  # Validate on attribute assignment
+        frozen = True
+
+class BallServer(Server):
+    def f(self, matrices: dict[str, np.ndarray]) -> dict[str, np.ndarray]:
+        result = InputData(points=matrices["input"]).compute()
+        return result.model_dump()
+
+    def f(self, input: BaseModel) -> dict[str, np.ndarray]:
+        result = Input.compute_min_circle()
+        return result.model_dump()

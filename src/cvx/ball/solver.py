@@ -2,6 +2,8 @@ import cvxpy as cp
 import numpy as np
 from pydantic import BaseModel, Field
 
+from cvx.ball.utils.convert import np_2_pa
+
 
 class ResultData(BaseModel):
     radius: float = Field(..., description="Radius of the ball", ge=0)
@@ -12,6 +14,10 @@ class ResultData(BaseModel):
         arbitrary_types_allowed = True  # Allow numpy arrays in Pydantic
         validate_assignment = True  # Validate on attribute assignment
         frozen = True
+
+    @property
+    def table(self):
+        return np_2_pa(data={"radius": np.array([self.radius]), "midpoint": self.midpoint, "points": self.points})
 
 
 def min_circle_cvx(points, **kwargs):

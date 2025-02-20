@@ -38,11 +38,11 @@ def test_compute_ball_square(server, expected_ball_square):
     input_data = {"input": expected_ball_square["points"]}
 
     # Compute result
-    np_dict = server.f(input_data)
+    result = server.f(input_data)
 
-    np.testing.assert_allclose(np_dict["points"], expected_ball_square["points"], atol=1e-5)
-    np.testing.assert_allclose(np_dict["radius"], expected_ball_square["radius"], rtol=1e-5)
-    np.testing.assert_allclose(np_dict["midpoint"], expected_ball_square["midpoint"], rtol=1e-5)
+    np.testing.assert_allclose(result.points, expected_ball_square["points"], atol=1e-5)
+    np.testing.assert_allclose(result.radius, expected_ball_square["radius"], rtol=1e-5)
+    np.testing.assert_allclose(result.midpoint, expected_ball_square["midpoint"], rtol=1e-5)
 
 
 def test_invalid_input_empty(server):

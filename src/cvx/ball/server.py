@@ -1,11 +1,12 @@
 import numpy as np
 from np.flight import Server
+from pydantic import BaseModel
 
 from cvx.ball.solver import min_circle_cvx
 
 
 class BallServer(Server):
-    def f(self, matrices: dict[str, np.ndarray]) -> dict[str, np.ndarray]:
+    def f(self, matrices: dict[str, np.ndarray]) -> BaseModel:
         self.logger.info(f"Matrices: {matrices.keys()}")
         matrix = matrices["input"]
 
@@ -19,8 +20,8 @@ class BallServer(Server):
         self.logger.info("Computing smallest enclosing ball...")
         result = min_circle_cvx(matrix, solver="CLARABEL")
 
-        # return a dictionary of np.ndarrays
-        return result.model_dump()
+        # would be better to return a pyarrow.table here but then harder for the user
+        return result
 
 
 # entry point for Docker
