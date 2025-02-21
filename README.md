@@ -97,3 +97,5 @@ and the optimal radius ensures all points are inside
 or on the boundary of the circle.
 
 ## Push to cloud.google.com
+
+We build an image on cloud.google.com
