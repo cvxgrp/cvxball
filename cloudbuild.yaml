@@ -7,4 +7,4 @@ steps:
 images:
     - 'gcr.io/cvxball/cvxball'
 options:
-    logging: NONE
+  logging: CLOUD_LOGGING
