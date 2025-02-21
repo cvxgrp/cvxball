@@ -3,7 +3,7 @@ steps:
       args: ['build', '-t', 'gcr.io/cvxball/cvxball', '-f', 'docker/Dockerfile', '.']
     - name: 'gcr.io/cloud-builders/docker'
       args: ['push', 'gcr.io/cvxball/cvxball']
-   
+
 images:
     - 'gcr.io/cvxball/cvxball'
 options:
