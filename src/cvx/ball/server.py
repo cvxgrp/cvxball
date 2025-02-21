@@ -23,6 +23,13 @@ class BallServer(Server):
         return {"radius": radius, "midpoint": midpoint, "points": matrix}
 
 
+def serve(port=8080):
+    flight_server = BallServer(host="0.0.0.0", port=port)  # nosec: B104
+    print("Flight Server is listening on port 8080...")
+    flight_server.run()
+
+
 # entry point for Docker
 if __name__ == "__main__":  # pragma: no cover
-    BallServer.start(host="0.0.0.0", port=8080)  # nosec: B104
+    serve(port=8080)
+    # BallServer.start(host="0.0.0.0", port=8080)  # nosec: B104
