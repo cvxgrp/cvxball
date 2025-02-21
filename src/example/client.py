@@ -17,4 +17,5 @@ def main():
 
 
 if __name__ == "__main__":
+    # Connect to server and do computation
     main()
