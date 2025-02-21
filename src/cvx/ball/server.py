@@ -1,4 +1,6 @@
 import numpy as np
+import pyarrow as pa
+import pyarrow.flight
 from np.flight import Server
 
 from cvx.ball.solver import min_circle_cvx
@@ -23,10 +25,29 @@ class BallServer(Server):
         return {"radius": radius, "midpoint": midpoint, "points": matrix}
 
 
+class FlightServer(pyarrow.flight.FlightServerBase):
+    def __init__(self):
+        super().__init__()
+
+    def do_get(self, context, ticket):
+        # Handle data requests here. For now, we're just sending a sample data.
+        data = pa.array([1, 2, 3, 4, 5])  # Example data
+        table = pa.table({"numbers": data})
+        return pyarrow.flight.RecordBatchStream(table)
+
+    def do_put(self, context, descriptor, reader):
+        # Handle receiving data. For now, we do nothing with it.
+        return
+
+
 def serve(port=8080):
-    flight_server = BallServer(host="0.0.0.0", port=port)  # nosec: B104
-    print("Flight Server is listening on port 8080...")
-    flight_server.run()
+    # flight_server = BallServer(host="0.0.0.0", port=port)  # nosec: B104
+    # print("Flight Server is listening on port 8080...")
+    # flight_server.run()
+    flight_server = FlightServer()
+    flight_server.listen("0.0.0.0", port)  # nosec: B104
+    print(f"Flight Server is listening on port {port}...")
+    flight_server.run()  # Run the server
 
 
 # entry point for Docker
