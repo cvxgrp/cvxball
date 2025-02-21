@@ -26,8 +26,8 @@ class BallServer(Server):
 
 
 class FlightServer(pyarrow.flight.FlightServerBase):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, location):
+        super().__init__(location)
 
     def do_get(self, context, ticket):
         # Handle data requests here. For now, we're just sending a sample data.
@@ -41,16 +41,16 @@ class FlightServer(pyarrow.flight.FlightServerBase):
 
 
 def serve(port=8080):
-    # flight_server = BallServer(host="0.0.0.0", port=port)  # nosec: B104
-    # print("Flight Server is listening on port 8080...")
-    # flight_server.run()
-    flight_server = FlightServer()
-    flight_server.listen("0.0.0.0", port)  # nosec: B104
+    # Create the server instance
+    location = f"grpc://0.0.0.0:{port}"
+    server = FlightServer(location=location)
+
+    # Start the server
+    server.serve()
     print(f"Flight Server is listening on port {port}...")
-    flight_server.run()  # Run the server
 
 
 # entry point for Docker
 if __name__ == "__main__":  # pragma: no cover
-    serve(port=8080)
+    serve()
     # BallServer.start(host="0.0.0.0", port=8080)  # nosec: B104
