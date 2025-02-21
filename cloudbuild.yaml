@@ -1,0 +1,5 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/cvxball/cvxball', '-f', 'docker/Dockerfile', '.']
+images:
+- 'gcr.io/cvxball/cvxball'
