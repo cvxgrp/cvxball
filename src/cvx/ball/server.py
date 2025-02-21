@@ -25,4 +25,4 @@ class BallServer(Server):
 
 # entry point for Docker
 if __name__ == "__main__":  # pragma: no cover
-    BallServer.start(host="0.0.0.0", port=8815)  # nosec: B104
+    BallServer.start(host="0.0.0.0", port=8080)  # nosec: B104
