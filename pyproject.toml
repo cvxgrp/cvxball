@@ -10,6 +10,7 @@ dependencies = [
     "numpy>=2",
     "clarabel>=0.10.0",
     "numpy-flight>=0.0.7",
+    "pyarrow>=19.0.1",
 ]
 
 [project.urls]
