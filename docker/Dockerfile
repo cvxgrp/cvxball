@@ -12,7 +12,7 @@ RUN useradd -m app_user && \
     chown app_user:app_user /app
 
 # Copy and install dependencies first for better caching
-COPY --chown=app_user:app_user uv.lock pyproject.toml README.md .
+COPY --chown=app_user:app_user uv.lock pyproject.toml README.md /app/
 
 # No dev dependencies,
 RUN uv sync --frozen --no-dev && rm -rf /uv /bin/uv && rm uv.lock pyproject.toml
@@ -24,7 +24,7 @@ COPY --chown=app_user:app_user src/cvx/ball/ ./cvx/ball/
 USER app_user
 
 # Expose the Flight server port
-EXPOSE 8815
+EXPOSE 8080
 
 # Set environment variables
 ENV PYTHONPATH=/app
