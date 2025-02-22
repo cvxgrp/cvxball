@@ -22,10 +22,10 @@ class BallServer(Server):
 
         # Compute the smallest enclosing ball
         self.logger.info("Computing smallest enclosing ball...")
-        radius, midpoint = min_circle_cvx(matrix, solver="CLARABEL")
+        result = min_circle_cvx(matrix, solver="CLARABEL")
 
         # return a dictionary of np.ndarrays
-        return {"radius": radius, "midpoint": midpoint, "points": matrix}
+        return result.model_dump()
 
 
 # def serve(port=8080):

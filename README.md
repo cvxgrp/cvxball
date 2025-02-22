@@ -17,7 +17,7 @@ We compute the smallest enclosing circle/ball for a set of points.
 >>> points = np.array([[2.0, 4.0], [0, 0], [2.5, 2.0]])
 
 # compute the circle, pick any solver supporting conic constraints
->>> radius, centre = min_circle_cvx(points, solver="CLARABEL")
+>>> result = min_circle_cvx(points, solver="CLARABEL")
 
 ```
 
