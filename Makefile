@@ -32,3 +32,6 @@ help: ## Show this help message
 marimo: install ## Start a Marimo server
 	@uv pip install marimo
 	@uv run marimo edit book/marimo
+
+demo: install
+	@uv run demo

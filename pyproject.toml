@@ -52,5 +52,6 @@ DEP003 = ["cvx"]
 exclude_dirs = ["tests"]
 
 [project.scripts]
-server = "cvx.ball.server:BallServer.start"
-client = "example.client:main"
+#server = "cvx.ball.server:BallServer.start"
+#client = "example.client:main"
+demo = "example.client:main"
