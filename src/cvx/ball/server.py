@@ -1,6 +1,7 @@
 # import numpy as np
-# import pyarrow as pa
-# import pyarrow.flight
+import pyarrow as pa
+import pyarrow.flight
+
 # from np.flight import Server
 #
 # from cvx.ball.solver import min_circle_cvx
@@ -25,21 +26,6 @@
 #         return {"radius": radius, "midpoint": midpoint, "points": matrix}
 #
 #
-# class FlightServer(pyarrow.flight.FlightServerBase):
-#     def __init__(self, location):
-#         super().__init__(location)
-#
-#     def do_get(self, context, ticket):
-#         # Handle data requests here. For now, we're just sending a sample data.
-#         data = pa.array([1, 2, 3, 4, 5])  # Example data
-#         table = pa.table({"numbers": data})
-#         return pyarrow.flight.RecordBatchStream(table)
-#
-#     def do_put(self, context, descriptor, reader):
-#         # Handle receiving data. For now, we do nothing with it.
-#         return
-#
-#
 # def serve(port=8080):
 #     # Create the server instance
 #     location = f"grpc://0.0.0.0:{port}"
@@ -54,16 +40,7 @@
 # if __name__ == "__main__":  # pragma: no cover
 #     serve()
 #     # BallServer.start(host="0.0.0.0", port=8080)  # nosec: B104
-
-
-import logging
-
-import pyarrow as pa
-import pyarrow.flight
-
-# Set up logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+from loguru import logger
 
 
 class FlightServer(pyarrow.flight.FlightServerBase):
