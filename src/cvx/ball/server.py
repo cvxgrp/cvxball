@@ -1,10 +1,14 @@
+import logging
+
 import numpy as np
 import pyarrow as pa
 import pyarrow.flight
-from loguru import logger
 from np.flight import Server
 
 from cvx.ball.solver import min_circle_cvx
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 class BallServer(Server):
