@@ -202,7 +202,6 @@ dependencies = [
     { name = "cvxpy-base" },
     { name = "numpy" },
     { name = "numpy-flight" },
-    { name = "pyarrow" },
 ]
 
 [package.dev-dependencies]
@@ -223,7 +222,6 @@ requires-dist = [
     { name = "cvxpy-base", specifier = ">=1.6.0" },
     { name = "numpy", specifier = ">=2" },
     { name = "numpy-flight", specifier = ">=0.0.7" },
-    { name = "pyarrow", specifier = ">=19.0.1" },
 ]
 
 [package.metadata.requires-dev]
