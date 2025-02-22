@@ -93,6 +93,17 @@ class FlightServer(pyarrow.flight.FlightServerBase):
             logger.error(f"Error in do_put: {e}")
             raise
 
+    def get_flight_info(self, context, descriptor):
+        """Provide metadata about available flights."""
+        key = descriptor.command
+        if key not in self.flights:
+            raise pyarrow.flight.FlightUnavailableError(f"Flight {key} not found")
+
+        # Create a FlightInfo object with metadata
+        schema = self.flights[key].schema
+        endpoint = pyarrow.flight.FlightEndpoint(key, [self.location])
+        return pyarrow.flight.FlightInfo(schema, descriptor, [endpoint])
+
 
 def serve(port=8080):
     # Create the server instance
