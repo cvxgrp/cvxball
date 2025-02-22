@@ -3,6 +3,9 @@ steps:
       args: ['build', '-t', 'gcr.io/cvxball/cvxball', '-f', 'docker/Dockerfile', '.']
     - name: 'gcr.io/cloud-builders/docker'
       args: ['push', 'gcr.io/cvxball/cvxball']
+    - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+      args: ['gcloud', 'run', 'deploy', 'cvxball', '--image', 'gcr.io/cvxball/cvxball:latest',
+             '--platform', 'managed', '--region', 'us-central1', '--allow-unauthenticated', '--port', '8080', '--use-http2']
 
 images:
     - 'gcr.io/cvxball/cvxball'
