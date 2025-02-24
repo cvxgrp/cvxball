@@ -221,7 +221,7 @@ requires-dist = [
     { name = "clarabel", specifier = ">=0.10.0" },
     { name = "cvxpy-base", specifier = ">=1.6.0" },
     { name = "numpy", specifier = ">=2" },
-    { name = "numpy-flight", specifier = ">=0.0.7" },
+    { name = "numpy-flight", specifier = ">=0.0.9" },
 ]
 
 [package.metadata.requires-dev]
@@ -512,19 +512,6 @@ wheels = [
 ]
 
 [[package]]
-name = "loguru"
-version = "0.7.3"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32'" },
-    { name = "win32-setctime", marker = "sys_platform == 'win32'" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/3a/05/a1dae3dffd1116099471c643b8924f5aa6524411dc6c63fdae648c4f1aca/loguru-0.7.3.tar.gz", hash = "sha256:19480589e77d47b8d85b2c827ad95d49bf31b0dcde16593892eb51dd18706eb6", size = 63559 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/0c/29/0348de65b8cc732daa3e33e67806420b2ae89bdce2b04af740289c5c6c8c/loguru-0.7.3-py3-none-any.whl", hash = "sha256:31a33c10c8e1e10422bfd431aeb5d351c7cf7fa671e3c4df004162264b28220c", size = 61595 },
-]
-
-[[package]]
 name = "marimo"
 version = "0.11.7"
 source = { registry = "https://pypi.org/simple" }
@@ -710,16 +697,15 @@ wheels = [
 
 [[package]]
 name = "numpy-flight"
-version = "0.0.7"
+version = "0.0.9"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "loguru" },
     { name = "numpy" },
     { name = "pyarrow" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/f9/35/6585e45455500dbdfa668fb4890d9e477167b558cdb89c5d69be6aa71790/numpy_flight-0.0.7.tar.gz", hash = "sha256:2cefdc2c12280867eb13cd691cc9414602d284acb0ab204cdc7ad0eec3b4ef3c", size = 8156 }
+sdist = { url = "https://files.pythonhosted.org/packages/51/0f/546a0084558c634dfeddf8227869c8b770362b084878dfdf3b3b77da5c68/numpy_flight-0.0.9.tar.gz", hash = "sha256:6d76a1d4971915d5bccf6f5d712a2023dacb6097065c004f142cd88e72dedf06", size = 7642 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/59/e3/91b50ce677d647c3df82e4823f9baff1d302fc537187405329ffc571ca0e/numpy_flight-0.0.7-py3-none-any.whl", hash = "sha256:831c87aee29568c81e1af2212bf0b5a3e6accf0cbc9c8503dd905108cad34c1a", size = 8524 },
+    { url = "https://files.pythonhosted.org/packages/f6/aa/8a3189a51eed69bc4eb8a72ecbc6d00443929ef012eb2bb62a53e1bbf2c6/numpy_flight-0.0.9-py3-none-any.whl", hash = "sha256:e1a53fdccf936ee7a73e005aa95d7e30ad1e21e5ab7f3c831b895f23ad4248f9", size = 7916 },
 ]
 
 [[package]]
@@ -1335,13 +1321,4 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/2f/1b/80460b3ac9795ef7bbaa074c603d64e009dbb2ceb11008416efab0dcc811/websockets-15.0-pp310-pypy310_pp73-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:e413352a921f5ad5d66f9e2869b977e88d5103fc528b6deb8423028a2befd842", size = 173425 },
     { url = "https://files.pythonhosted.org/packages/56/d1/8da7e733ed266f342e8c544c3b8338449de9b860d85d9a0bfd4fe1857d6e/websockets-15.0-pp310-pypy310_pp73-win_amd64.whl", hash = "sha256:8561c48b0090993e3b2a54db480cab1d23eb2c5735067213bb90f402806339f5", size = 176160 },
     { url = "https://files.pythonhosted.org/packages/e8/b2/31eec524b53f01cd8343f10a8e429730c52c1849941d1f530f8253b6d934/websockets-15.0-py3-none-any.whl", hash = "sha256:51ffd53c53c4442415b613497a34ba0aa7b99ac07f1e4a62db5dcd640ae6c3c3", size = 169023 },
-]
-
-[[package]]
-name = "win32-setctime"
-version = "1.2.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/b3/8f/705086c9d734d3b663af0e9bb3d4de6578d08f46b1b101c2442fd9aecaa2/win32_setctime-1.2.0.tar.gz", hash = "sha256:ae1fdf948f5640aae05c511ade119313fb6a30d7eabe25fef9764dca5873c4c0", size = 4867 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/e1/07/c6fe3ad3e685340704d314d765b7912993bcb8dc198f0e7a89382d37974b/win32_setctime-1.2.0-py3-none-any.whl", hash = "sha256:95d644c4e708aba81dc3704a116d8cbc974d70b3bdb8be1d150e36be6e9d1390", size = 4083 },
 ]
