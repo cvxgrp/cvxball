@@ -36,7 +36,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build and Push Docker Image
-        uses: cvxgrp/.github/actions/docker@main
+        uses: cvxgrp/.github/actions/docker@v2.2.8
         with:
           repository: ${{ github.repository }}
           tag: ${{ needs.tag.outputs.tag }}
