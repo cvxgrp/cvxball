@@ -15,7 +15,7 @@ dependencies = [
 [project.urls]
 repository = "https://github.com/cvxgrp/cvxball"
 
-[dependency-groups]
+[project.optional-dependencies]
 dev = [
     "pytest>=8.3.4",
     "pytest-cov>=6.0.0",
@@ -47,6 +47,10 @@ packages = ["src/cvx"]
 [tool.deptry.per_rule_ignores]
 DEP002 = ["clarabel","numpy-flight"]
 DEP003 = ["cvx"]
+
+[tool.deptry]
+# see https://deptry.com/usage/#pep-621-dev-dependency-groups
+pep621_dev_dependency_groups = ["dev"]
 
 [tool.bandit]
 exclude_dirs = ["tests"]
