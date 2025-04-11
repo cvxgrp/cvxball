@@ -223,7 +223,7 @@ requires-dist = [
     { name = "kaleido", marker = "extra == 'dev'", specifier = "==0.2.1" },
     { name = "marimo", marker = "extra == 'dev'", specifier = ">=0.11.6" },
     { name = "matplotlib", marker = "extra == 'dev'", specifier = ">=3.10.0" },
-    { name = "mosek", marker = "extra == 'dev'", specifier = "==11.0.14" },
+    { name = "mosek", marker = "extra == 'dev'", specifier = "==11.0.16" },
     { name = "numpy", specifier = ">=2" },
     { name = "numpy-flight", specifier = ">=0.0.9" },
     { name = "plotly", marker = "extra == 'dev'", specifier = ">=5.24.1" },
@@ -600,16 +600,16 @@ wheels = [
 
 [[package]]
 name = "mosek"
-version = "11.0.14"
+version = "11.0.16"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "numpy" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/9c/70/af9620e832c00e15ea4a7b2db0150af1e5d18a5108000eed119d4619aac9/mosek-11.0.14-cp39-abi3-macosx_11_0_arm64.whl", hash = "sha256:bcc9e0a5928d2fc036047200f2666cacb6838968ea8c5aa7dbd1b96104fd22c5", size = 8336444 },
-    { url = "https://files.pythonhosted.org/packages/f2/cb/63b77186139eb01fa9cfda5b285d0a870cf2fec88db86bcfd9378be0ed55/mosek-11.0.14-cp39-abi3-manylinux2014_x86_64.whl", hash = "sha256:275a9be59c7b136a9ddd8d470d1cc9dd811815b7aebcb8dd4d05e878588d16a8", size = 14714163 },
-    { url = "https://files.pythonhosted.org/packages/1c/fe/0853a7f45583986eca9bb253aa41581c163cc16d8e88a88c6d60dffa1cf4/mosek-11.0.14-cp39-abi3-manylinux_2_29_aarch64.whl", hash = "sha256:784ab691bb33ba82d360aba327c361ed3c8098d7e10eeb950516c1d04a27fe1f", size = 10607953 },
-    { url = "https://files.pythonhosted.org/packages/c8/8d/82965691e0ab54daf8729e0415d511bad8e7c56f3e95ae97f54764ac16bd/mosek-11.0.14-cp39-abi3-win_amd64.whl", hash = "sha256:42719eb0890658d9fd46a6b465bbf1ced0a2e18f29d74b2964536e5127c0f145", size = 10642638 },
+    { url = "https://files.pythonhosted.org/packages/c1/b7/5cc18837861188310ae978cc672b53ae711eafe0a552ced865e3f67b6abb/mosek-11.0.16-cp39-abi3-macosx_11_0_arm64.whl", hash = "sha256:3130b7932a4435538152722765bf6042e1bb4ea9a89aabcfcce1a076f0dd2932", size = 8336638 },
+    { url = "https://files.pythonhosted.org/packages/c0/dc/231b3057b464238200639e07a0f06f2b2c0936883ef482b6ee8ad228f4f8/mosek-11.0.16-cp39-abi3-manylinux2014_x86_64.whl", hash = "sha256:a91d1e12b645b08a50879492baf33031eb31a6ebc265474a6c1846a6dc2dc501", size = 14717874 },
+    { url = "https://files.pythonhosted.org/packages/b9/5b/7ff171ab10b6501bc92b8a55f026a17bf88af98ecd5a7a9f01edfef4458c/mosek-11.0.16-cp39-abi3-manylinux_2_29_aarch64.whl", hash = "sha256:609cc95a5db55a753822cdc57306e8facb4e435761996bf62eb6db195d9921ec", size = 10607743 },
+    { url = "https://files.pythonhosted.org/packages/8c/1a/768827bd2419e72f8ade0ff30f180eac504eb8f451514876b546728f11f5/mosek-11.0.16-cp39-abi3-win_amd64.whl", hash = "sha256:a9d848092911cae3e90978185034d60d57d87e0f87ac4b228a9c1ca229c56d2d", size = 10642997 },
 ]
 
 [[package]]
