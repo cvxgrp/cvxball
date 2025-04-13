@@ -1,5 +1,5 @@
 Dependency Age Report (sorted by date, newest first):
+cvxpy-base (latest: 1.6.5) - Last updated: 2025-04-13
 numpy-flight (latest: 0.0.10) - Last updated: 2025-03-26
 numpy (latest: 2.2.4) - Last updated: 2025-03-16
-cvxpy-base (latest: 1.6.4) - Last updated: 2025-03-16
 clarabel (latest: 0.10.0) - Last updated: 2025-02-02
