@@ -4,6 +4,7 @@
 [![CI](https://github.com/cvxgrp/cvxball/actions/workflows/ci.yml/badge.svg)](https://github.com/cvxgrp/cvxball/actions/workflows/ci.yml)
 [![Coverage Status](https://coveralls.io/repos/github/cvxgrp/cvxball/badge.svg?branch=main)](https://coveralls.io/github/cvxgrp/cvxball?branch=main)
 [![Created with Cradle](https://img.shields.io/badge/Created%20with-Cradle-blue?style=flat-square)](https://github.com/tschm/package)
+[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://github.com/renovatebot/renovate)
 
 We compute the smallest enclosing circle/ball for a set of points.
 
