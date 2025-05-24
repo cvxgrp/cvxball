@@ -1,10 +1,12 @@
-# [cvxball](https://www.cvxgrp.org/cvxball/book)
+# 🔵 [cvxball](https://www.cvxgrp.org/cvxball/book)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![CI](https://github.com/cvxgrp/cvxball/actions/workflows/ci.yml/badge.svg)](https://github.com/cvxgrp/cvxball/actions/workflows/ci.yml)
 [![Coverage Status](https://coveralls.io/repos/github/cvxgrp/cvxball/badge.svg?branch=main)](https://coveralls.io/github/cvxgrp/cvxball?branch=main)
 [![Created with Cradle](https://img.shields.io/badge/Created%20with-Cradle-blue?style=flat-square)](https://github.com/tschm/package)
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://github.com/renovatebot/renovate)
+
+## 📋 Overview
 
 We compute the smallest enclosing circle/ball for a set of points.
 
@@ -22,7 +24,7 @@ We compute the smallest enclosing circle/ball for a set of points.
 
 ```
 
-## Background
+## 🧮 Background
 
 We are solving the convex optimization problem:
 
@@ -49,7 +51,7 @@ lie inside or on the boundary of the circle.
 
 ---
 
-### Interpretation as a Min/Max Problem
+### 📊 Interpretation as a Min/Max Problem
 
 The constraint $\| p_i - \text{center} \| \leq r$ implies that
 the radius $r$ must be at least as large as the maximum distance
@@ -80,7 +82,7 @@ such that the maximum distance from the center to any point is minimized.
 
 ---
 
-### Geometric Interpretation
+### 📐 Geometric Interpretation
 
 Geometrically, the problem is about finding the **smallest enclosing circle**
 (or ball in higher dimensions) that contains all the given points.
@@ -97,6 +99,6 @@ The optimal center minimizes the maximum distance to any of the points,
 and the optimal radius ensures all points are inside
 or on the boundary of the circle.
 
-## Push to cloud.google.com
+## ☁️ Push to cloud.google.com
 
 We build an image on cloud.google.com

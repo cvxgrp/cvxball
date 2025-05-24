@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>cvxball &#8212; cvxball</title>
+    <title>🔵 cvxball &#8212; cvxball</title>
   
   
   
@@ -173,7 +173,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    cvxball
+                    🔵 cvxball
                 </a>
             </li>
         </ul>
@@ -366,7 +366,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>cvxball</h1>
+    <h1>🔵 cvxball</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -376,12 +376,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-as-a-min-max-problem">Interpretation as a Min/Max Problem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-interpretation">Geometric Interpretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">📋 Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">🧮 Background</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-as-a-min-max-problem">📊 Interpretation as a Min/Max Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-interpretation">📐 Geometric Interpretation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#push-to-cloud-google-com">Push to cloud.google.com</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#push-to-cloud-google-com">☁️ Push to cloud.google.com</a></li>
 </ul>
             </nav>
         </div>
@@ -394,12 +395,14 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="cvxball">
-<h1><a class="reference external" href="https://www.cvxgrp.org/cvxball/book">cvxball</a><a class="headerlink" href="#cvxball" title="Link to this heading">#</a></h1>
+<h1>🔵 <a class="reference external" href="https://www.cvxgrp.org/cvxball/book">cvxball</a><a class="headerlink" href="#cvxball" title="Link to this heading">#</a></h1>
 <p><a class="reference internal" href="#LICENSE"><span class="xref myst"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" /></span></a>
 <a class="reference external" href="https://github.com/cvxgrp/cvxball/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/cvxgrp/cvxball/actions/workflows/ci.yml/badge.svg" /></a>
 <a class="reference external" href="https://coveralls.io/github/cvxgrp/cvxball?branch=main"><img alt="Coverage Status" src="https://coveralls.io/repos/github/cvxgrp/cvxball/badge.svg?branch=main" /></a>
 <a class="reference external" href="https://github.com/tschm/package"><img alt="Created with Cradle" src="https://img.shields.io/badge/Created%20with-Cradle-blue?style=flat-square" /></a>
 <a class="reference external" href="https://github.com/renovatebot/renovate"><img alt="Renovate enabled" src="https://img.shields.io/badge/renovate-enabled-brightgreen.svg" /></a></p>
+<section id="overview">
+<h2>📋 Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>We compute the smallest enclosing circle/ball for a set of points.</p>
 <p><img alt="Smallest enclosing circle for  random points" src="docs/example.png" /></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -413,8 +416,9 @@ document.write(`
 
 </pre></div>
 </div>
+</section>
 <section id="background">
-<h2>Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h2>
+<h2>🧮 Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h2>
 <p>We are solving the convex optimization problem:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -437,7 +441,7 @@ equal to the radius <span class="math notranslate nohighlight">\(r\)</span>:</p>
 lie inside or on the boundary of the circle.</p>
 <hr class="docutils" />
 <section id="interpretation-as-a-min-max-problem">
-<h3>Interpretation as a Min/Max Problem<a class="headerlink" href="#interpretation-as-a-min-max-problem" title="Link to this heading">#</a></h3>
+<h3>📊 Interpretation as a Min/Max Problem<a class="headerlink" href="#interpretation-as-a-min-max-problem" title="Link to this heading">#</a></h3>
 <p>The constraint <span class="math notranslate nohighlight">\(\| p_i - \text{center} \| \leq r\)</span> implies that
 the radius <span class="math notranslate nohighlight">\(r\)</span> must be at least as large as the maximum distance
 from the center to any of the points <span class="math notranslate nohighlight">\(p_i\)</span>.</p>
@@ -463,7 +467,7 @@ such that the maximum distance from the center to any point is minimized.</p>
 </section>
 <hr class="docutils" />
 <section id="geometric-interpretation">
-<h3>Geometric Interpretation<a class="headerlink" href="#geometric-interpretation" title="Link to this heading">#</a></h3>
+<h3>📐 Geometric Interpretation<a class="headerlink" href="#geometric-interpretation" title="Link to this heading">#</a></h3>
 <p>Geometrically, the problem is about finding the <strong>smallest enclosing circle</strong>
 (or ball in higher dimensions) that contains all the given points.
 The center of the circle is positioned in such a way that the radius
@@ -481,7 +485,7 @@ or on the boundary of the circle.</p></li>
 </section>
 </section>
 <section id="push-to-cloud-google-com">
-<h2>Push to <a class="reference external" href="http://cloud.google.com">cloud.google.com</a><a class="headerlink" href="#push-to-cloud-google-com" title="Link to this heading">#</a></h2>
+<h2>☁️ Push to <a class="reference external" href="http://cloud.google.com">cloud.google.com</a><a class="headerlink" href="#push-to-cloud-google-com" title="Link to this heading">#</a></h2>
 <p>We build an image on <a class="reference external" href="http://cloud.google.com">cloud.google.com</a></p>
 </section>
 <div class="toctree-wrapper compound">
@@ -543,12 +547,13 @@ or on the boundary of the circle.</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">Background</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-as-a-min-max-problem">Interpretation as a Min/Max Problem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-interpretation">Geometric Interpretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">📋 Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">🧮 Background</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-as-a-min-max-problem">📊 Interpretation as a Min/Max Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-interpretation">📐 Geometric Interpretation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#push-to-cloud-google-com">Push to cloud.google.com</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#push-to-cloud-google-com">☁️ Push to cloud.google.com</a></li>
 </ul>
   </nav></div>
 
