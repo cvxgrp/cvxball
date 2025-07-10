@@ -11,9 +11,7 @@ install: venv ## Install dependencies and setup environment
 	uv sync --dev --frozen
 
 fmt: venv ## Format and lint code
-	uv pip install pre-commit
-	uv run pre-commit install
-	uv run pre-commit run --all-files
+	uvx pre-commit run --all-files
 
 clean: ## Clean build artifacts and stale branches
 	git clean -X -d -f
