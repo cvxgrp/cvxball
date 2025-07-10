@@ -307,7 +307,7 @@ requires-dist = [
     { name = "clarabel", specifier = ">=0.10.0" },
     { name = "cvxpy-base", specifier = ">=1.6.0" },
     { name = "numpy", specifier = ">=2" },
-    { name = "numpy-flight", specifier = ">=0.0.9" },
+    { name = "numpy-flight", specifier = ">=0.0.14" },
 ]
 
 [package.metadata.requires-dev]
@@ -956,16 +956,16 @@ wheels = [
 
 [[package]]
 name = "numpy-flight"
-version = "0.0.12"
+version = "0.0.14"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "numpy", version = "2.3.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "pyarrow" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/47/e7/6621c56411186d4bad93eb4ec9ce4934fffa01cd71f2c0ba36a8bf011913/numpy_flight-0.0.12.tar.gz", hash = "sha256:2a62859024773f91b03c2468caa332d050c1981af8e9c69ee5e44bfd849cb3f4", size = 7801, upload-time = "2025-06-11T03:55:02.835Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/dc/c2/1a1a2285bf2064d267e07be745681783bcdc3160a6cb3b519e8ade38168d/numpy_flight-0.0.14.tar.gz", hash = "sha256:3bddf3c7f211d7e6c0573b1480b36bfe857e909af3ff3ecff66ef59baacc26ae", size = 7796, upload-time = "2025-07-10T07:28:41.65Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c4/80/2e67e8fbec7ff0f284457ab93c8146bfa6e3b6b2a17937378b79631fc5f4/numpy_flight-0.0.12-py3-none-any.whl", hash = "sha256:b7a8625163f44c3359e92b82e2fe7a5ce58766d1130341e6db556f9a80f93ba7", size = 8085, upload-time = "2025-06-11T03:55:01.344Z" },
+    { url = "https://files.pythonhosted.org/packages/39/31/5a843a53dcae8e28225d99a15e9b2bfd0830144135b4630eadb1c0ddf3e4/numpy_flight-0.0.14-py3-none-any.whl", hash = "sha256:7ac0235c3e9b61936792eeef60eeb219c33e1647e00e63243a352f6136ddb0d8", size = 8016, upload-time = "2025-07-10T07:28:40.524Z" },
 ]
 
 [[package]]
