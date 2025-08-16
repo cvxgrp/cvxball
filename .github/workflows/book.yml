@@ -26,14 +26,6 @@ jobs:
         with:
           source-folder: 'src/cvx'
 
-  age:
-    runs-on: "ubuntu-latest"
-    steps:
-      - name: "Build the virtual environment for ${{ github.repository }}"
-        uses: cvxgrp/.github/actions/environment@v2.2.8
-
-      - uses: cvxgrp/.github/actions/age@v2.2.8
-
   test:
     runs-on: "ubuntu-latest"
     steps:
@@ -55,7 +47,7 @@ jobs:
 
   book:
     runs-on: "ubuntu-latest"
-    needs: [test, pdoc, jupyter, marimo, age]
+    needs: [test, pdoc, jupyter, marimo]
 
     permissions:
       contents: write
