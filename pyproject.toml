@@ -4,10 +4,10 @@ version = "0.0.0"
 description = "Fast computation of the smallest enclosing sphere"
 authors = [{name='Thomas Schmelzer', email= 'thomas.schmelzer@gmail.com'}]
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
-    "cvxpy-base>=1.6.0",
-    "clarabel>=0.10.0",
+    "cvxpy-base>=1.7.5",
+    "clarabel>=0.11.1",
 ]
 
 [project.urls]
@@ -15,14 +15,14 @@ repository = "https://github.com/cvxgrp/cvxball"
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=8.3.4",
-    "pytest-cov>=6.0.0",
-    "pre-commit>=4.0.1",
-    "kaleido==0.2.1",
-    "mosek==11.0.16",
-    "matplotlib>=3.10.0",
-    "plotly>=5.24.1",
-    "marimo>=0.11.6",
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "pre-commit>=4.5.1",
+    "kaleido==1.2.0",
+    "mosek==11.0.30",
+    "matplotlib>=3.10.8",
+    "plotly>=6.5.0",
+    "marimo>=0.18.4",
 ]
 
 [build-system]
