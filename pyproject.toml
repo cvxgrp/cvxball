@@ -38,4 +38,5 @@ package_module_name_map = { cvxpy = "cvxpy-base" }
 pep621_dev_dependency_groups = ["dev"]
 
 [tool.deptry.per_rule_ignores]
-DEP002 = ["clarabel"]
+DEP002 = ["clarabel", "cvxpy-base"]
+DEP001 = ["cvxpy"]
