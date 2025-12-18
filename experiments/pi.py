@@ -1,5 +1,4 @@
-"""
-Approximation of π using convex optimization.
+"""Approximation of π using convex optimization.
 
 This script demonstrates how to approximate the value of π using a convex optimization approach.
 It formulates a semidefinite programming (SDP) problem to find a polynomial that
