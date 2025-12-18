@@ -21,7 +21,7 @@ def min_circle_mosek(points, **kwargs):
         **kwargs: Extra keyword arguments forwarded to ``Model.solve``.
 
     Returns:
-        A ``Circle`` containing the optimal radius and center.
+        A tuple ``(radius, center)`` analogous to the CVXPY API.
     """
     with mf.Model() as model:
         r = model.variable("Radius", 1)
