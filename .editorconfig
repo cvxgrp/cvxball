@@ -1,28 +1,36 @@
-# EditorConfig is awesome: https://EditorConfig.org
-
-# Root of the file, defines the configuration scope.
+# This file is part of the jebel-quant/rhiza repository
+# (https://github.com/jebel-quant/rhiza).
+#
 root = true
 
-# 1. Top-level editor settings for all files in the repository
+# Default settings for all files
 [*]
-# Use 4 spaces for indentation
+end_of_line = lf
+trim_trailing_whitespace = true
+insert_final_newline = true
+charset = utf-8
+
+# Python, reStructuredText, and text files
+[*.{py,rst,txt}]
 indent_style = space
 indent_size = 4
-# Ensure no trailing whitespace at the end of lines
-trim_trailing_whitespace = true
-# Ensure that files end with a newline
-end_of_line = lf
-# Ensure UTF-8 encoding for all files
-charset = utf-8
-# Insert final newline if file doesn't have it
-insert_final_newline = true
 
-# 2. Specific settings for Python files
-[*.py]
-# Use 4 spaces for indentation (Python's PEP-8 standard)
-indent_size = 4
+# YAML, JSON, and other config files
+[*.{yml,yaml,json}]
+indent_style = space
+indent_size = 2
 
-# 4. Markdown files settings
-[*.md]
-# Ensure no trailing spaces in Markdown files
-trim_trailing_whitespace = true
+# Markdown files
+# [*.{md,markdown}]
+# trim_trailing_whitespace = false
+
+# Don't apply editorconfig rules to vendor/ resources
+# This is a "defensive" rule for the day we may have
+# the vendor folder
+[vendor/**]
+charset = unset
+end_of_line = unset
+indent_size = unset
+indent_style = unset
+insert_final_newline = unset
+trim_trailing_whitespace = unset

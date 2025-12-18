@@ -1,59 +1,53 @@
-
+# This file is part of the jebel-quant/rhiza repository
+# (https://github.com/jebel-quant/rhiza).
+#
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: check-toml
-      - id: end-of-file-fixer
-      - id: trailing-whitespace
       - id: check-yaml
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 'v0.11.5'
+    rev: 'v0.14.9'
     hooks:
       - id: ruff
-        args: [ --fix, --exit-non-zero-on-fix ]
+        args: [ --fix, --exit-non-zero-on-fix, --unsafe-fixes ]
+
       # Run the formatter
       - id: ruff-format
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.44.0
+    rev: v0.47.0
     hooks:
       - id: markdownlint
-
-  - repo: https://github.com/asottile/pyupgrade
-    rev: v3.19.1
-    hooks:
-      - id: pyupgrade
+        args: ["--disable", "MD013"]
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.33.0
+    rev: 0.36.0
     hooks:
       - id: check-renovate
-        args: ["--verbose"]
+        args: [ "--verbose" ]
+
       - id: check-github-workflows
         args: ["--verbose"]
 
   - repo: https://github.com/rhysd/actionlint
-    rev: v1.7.7
+    rev: v1.7.9
     hooks:
       - id: actionlint
-        args: [-ignore, SC]
+        args: [ -ignore, SC ]
 
   - repo: https://github.com/abravalheri/validate-pyproject
     rev: v0.24.1
     hooks:
       - id: validate-pyproject
 
-  - repo: https://github.com/crate-ci/typos
-    rev: v1.31.1
+  - repo: local
     hooks:
-      - id: typos
-        exclude: ^\.gitignore$
-
-  - repo: https://github.com/PyCQA/bandit
-    rev: 1.8.3
-    hooks:
-    - id: bandit
-      args: ["-c", "pyproject.toml"]
-      additional_dependencies: ["bandit[toml]"]
+      - id: update-readme-help
+        name: Update README with Makefile help output
+        entry: /bin/sh .github/scripts/update-readme-help.sh
+        language: system
+        files: '^Makefile$'
+        pass_filenames: false
