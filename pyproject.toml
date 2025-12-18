@@ -15,12 +15,12 @@ repository = "https://github.com/cvxgrp/cvxball"
 
 [project.optional-dependencies]
 dev = [
+    "pytest-html>=4.1.1",
     "pytest>=9.0.2",
     "pytest-cov>=7.0.0",
     "pre-commit>=4.5.1",
     "kaleido==1.2.0",
     "mosek==11.0.30",
-    "matplotlib>=3.10.8",
     "plotly>=6.5.0",
     "marimo>=0.18.4",
 ]
