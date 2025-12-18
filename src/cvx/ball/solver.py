@@ -1,3 +1,9 @@
+"""Convex utilities for computing the minimum enclosing circle/ball.
+
+Provides a CVXPY-based solver for the smallest enclosing ball problem used by
+tests and experiments in this repository.
+"""
+
 from typing import Any
 
 import cvxpy as cp

@@ -1,3 +1,9 @@
+"""Experiments and benchmarking utilities for the cvxball project.
+
+This package contains small scripts to test alternative formulations,
+measure performance, and visualize scaling behavior.
+"""
+
 #    Copyright 2025 Stanford University Convex Optimization Group
 #
 #    Licensed under the Apache License, Version 2.0 (the "License");

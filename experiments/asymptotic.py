@@ -1,3 +1,9 @@
+"""Asymptotic timing study for the minimum enclosing ball solver.
+
+This script measures average runtime for randomly generated inputs of
+increasing size and plots the observed scaling against an O(n) baseline.
+"""
+
 import time
 
 import numpy as np
@@ -8,6 +14,14 @@ from cvx.ball.solver import min_circle_cvx
 
 
 def cvx(n: int) -> float:
+    """Solve a random instance with ``n`` points and return the radius.
+
+    Args:
+        n: Number of points to generate in 5 dimensions.
+
+    Returns:
+        The optimal radius produced by the convex solver.
+    """
     points = np.random.rand(n, 5)
     return min_circle_cvx(points, solver="CLARABEL")
 
@@ -23,6 +37,11 @@ def measure_execution_time(func, n: int, num_trials: int = 3) -> float:
 
 
 def run_analysis() -> tuple[list[int], list[float]]:
+    """Measure average execution time for a sequence of problem sizes.
+
+    Returns:
+        A tuple ``(sizes, times)`` with sizes as integers and times in seconds.
+    """
     # Test for different values of n (powers of 2)
     sequence = np.array([2**n for n in range(4, 20)])
     execution_times = []
@@ -36,6 +55,12 @@ def run_analysis() -> tuple[list[int], list[float]]:
 
 
 def plot_results(sizes: list[int], times: list[float]) -> None:
+    """Plot measured execution times and an O(n) reference line.
+
+    Args:
+        sizes: Problem sizes used in the experiments.
+        times: Averaged runtimes corresponding to each size.
+    """
     # Create figure
     fig = make_subplots(specs=[[{"secondary_y": True}]])
 

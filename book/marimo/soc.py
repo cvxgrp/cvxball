@@ -8,6 +8,12 @@
 # ]
 # ///
 
+"""Interactive marimo notebook demonstrating second-order cone formulations.
+
+This app explores multiple CVXPY formulations for the minimum enclosing ball
+and visualizes their behavior on random point sets.
+"""
+
 import marimo
 
 __generated_with = "0.11.6"

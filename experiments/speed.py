@@ -1,3 +1,9 @@
+"""Micro-benchmarks comparing alternative formulations and solvers.
+
+This script times different implementations of the minimum enclosing ball
+problem on a fixed random instance.
+"""
+
 import statistics
 import timeit as tt
 
@@ -11,12 +17,15 @@ if __name__ == "__main__":
     points = np.random.randn(10000, 5)
 
     def cvx():
+        """Run the CVXPY SOC vectorized formulation with CLARABEL."""
         min_circle_cvx(points, solver="CLARABEL")
 
     def alter_a():
+        """Run the alternative SOC-per-point formulation with CLARABEL."""
         alter1(points, solver="CLARABEL")
 
     def alter_b():
+        """Run the alternative norm-constraint formulation with CLARABEL."""
         alter2(points, solver="CLARABEL")
 
     times_clarabel = tt.repeat(cvx, number=1, repeat=5)
