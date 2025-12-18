@@ -1,7 +1,10 @@
+"""Smoke test for connecting to the remote Flight server over grpc+tls."""
+
 import pyarrow.flight as flight
 
 
 def test_mini():
+    """Attempt a basic Flight request and ensure no unexpected exceptions are raised."""
     # Connect to the Flight server using grpc+tls
     client = flight.FlightClient("grpc+tls://cvxball-710171668953.us-central1.run.app:443")
 

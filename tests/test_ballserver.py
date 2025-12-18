@@ -1,3 +1,5 @@
+"""Unit tests for the BallServer service computing minimum enclosing balls."""
+
 import numpy as np
 import pytest
 
