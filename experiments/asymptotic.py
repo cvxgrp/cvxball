@@ -1,5 +1,4 @@
 import time
-from typing import List, Tuple
 
 import numpy as np
 import plotly.graph_objects as go
@@ -14,7 +13,7 @@ def cvx(n: int) -> float:
 
 
 def measure_execution_time(func, n: int, num_trials: int = 3) -> float:
-    """Run multiple trials and return average execution time"""
+    """Run multiple trials and return average execution time."""
     times = []
     for _ in range(num_trials):
         start = time.time()
@@ -23,7 +22,7 @@ def measure_execution_time(func, n: int, num_trials: int = 3) -> float:
     return np.mean(times)
 
 
-def run_analysis() -> Tuple[List[int], List[float]]:
+def run_analysis() -> tuple[list[int], list[float]]:
     # Test for different values of n (powers of 2)
     sequence = np.array([2**n for n in range(4, 20)])
     execution_times = []
@@ -36,7 +35,7 @@ def run_analysis() -> Tuple[List[int], List[float]]:
     return sequence, execution_times
 
 
-def plot_results(sizes: List[int], times: List[float]) -> None:
+def plot_results(sizes: list[int], times: list[float]) -> None:
     # Create figure
     fig = make_subplots(specs=[[{"secondary_y": True}]])
 
