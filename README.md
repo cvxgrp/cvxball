@@ -1,8 +1,7 @@
-# 🔵 [cvxball](https://www.cvxgrp.org/cvxball/book)
+# 🔵 [cvxball](https://www.cvxgrp.org/cvxball)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![CI](https://github.com/cvxgrp/cvxball/actions/workflows/ci.yml/badge.svg)](https://github.com/cvxgrp/cvxball/actions/workflows/ci.yml)
-[![Coverage Status](https://coveralls.io/repos/github/cvxgrp/cvxball/badge.svg?branch=main)](https://coveralls.io/github/cvxgrp/cvxball?branch=main)
 [![Created with Cradle](https://img.shields.io/badge/Created%20with-Cradle-blue?style=flat-square)](https://github.com/tschm/package)
 [![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://github.com/renovatebot/renovate)
 
@@ -98,7 +97,3 @@ both the center and the radius of the circle.
 The optimal center minimizes the maximum distance to any of the points,
 and the optimal radius ensures all points are inside
 or on the boundary of the circle.
-
-## ☁️ Push to cloud.google.com
-
-We build an image on cloud.google.com
