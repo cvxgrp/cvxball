@@ -1,6 +1,6 @@
 [project]
 name = 'cvxball'
-version = "0.0.24"
+version = "0.1.0"
 description = "Fast computation of the smallest enclosing sphere"
 authors = [{name='Thomas Schmelzer', email= 'thomas.schmelzer@gmail.com'}]
 readme = "README.md"
