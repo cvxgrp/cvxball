@@ -14,12 +14,8 @@ dependencies = [
 [project.urls]
 repository = "https://github.com/cvxgrp/cvxball"
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
-    "pytest-html>=4.1.1",
-    "pytest>=9.0.2",
-    "pytest-cov>=7.0.0",
-    "pre-commit>=4.5.1",
     "kaleido==1.2.0",
     "mosek==11.0.30",
     "plotly>=6.5.0",
@@ -36,7 +32,6 @@ packages = ["src/cvx"]
 
 [tool.deptry]
 package_module_name_map = { cvxpy = "cvxpy-base" }
-pep621_dev_dependency_groups = ["dev"]
 
 [tool.deptry.per_rule_ignores]
 DEP002 = ["clarabel", "cvxpy-base"]
