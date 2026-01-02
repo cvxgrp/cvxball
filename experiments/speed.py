@@ -9,7 +9,7 @@ import timeit as tt
 
 import numpy as np
 
-from cvx.ball.solver import min_circle_cvx
+from cvxball.solver import min_circle_cvx
 from experiments.alter1 import min_circle_cvx as alter1
 from experiments.alter2 import min_circle_cvx as alter2
 

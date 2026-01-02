@@ -27,7 +27,7 @@ with app.setup:
     import matplotlib.pyplot as plt
     import numpy as np
 
-    from cvx.ball.solver import min_circle_cvx
+    from cvxball.solver import min_circle_cvx
 
 
 @app.cell

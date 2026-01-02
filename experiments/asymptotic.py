@@ -10,7 +10,7 @@ import numpy as np
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-from cvx.ball.solver import min_circle_cvx
+from cvxball.solver import min_circle_cvx
 
 
 def cvx(n: int) -> float:

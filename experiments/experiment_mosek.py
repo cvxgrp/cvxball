@@ -10,7 +10,7 @@ import timeit as tt
 import mosek.fusion as mf
 import numpy as np
 
-from cvx.ball.solver import min_circle_cvx
+from cvxball.solver import min_circle_cvx
 
 
 def min_circle_mosek(points, **kwargs):
