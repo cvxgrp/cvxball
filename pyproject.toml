@@ -20,7 +20,8 @@ dev = [
     "mosek==11.0.30",
     "plotly>=6.5.0",
     "marimo>=0.18.4",
-    "matplotlib>=3.10.8"
+    "matplotlib>=3.10.8",
+    "pandas>=2.3"
 ]
 
 [build-system]
