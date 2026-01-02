@@ -30,7 +30,7 @@ def min_circle_cvx(points: np.ndarray, **kwargs: dict[str, Any]) -> tuple[float,
 
     Example:
         >>> import numpy as np
-        >>> from cvx.ball.solver import min_circle_cvx
+        >>> from cvxball.solver import min_circle_cvx
         >>> points = np.array([[0, 0], [1, 0], [0, 1]])
         >>> radius, center = min_circle_cvx(points, solver="CLARABEL")
     """

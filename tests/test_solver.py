@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from cvx.ball.solver import min_circle_cvx
+from cvxball.solver import min_circle_cvx
 
 
 def test_random():
