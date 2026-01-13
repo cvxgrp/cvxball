@@ -27,7 +27,7 @@ repository = "https://github.com/cvxgrp/cvxball"
 [dependency-groups]
 dev = [
     "kaleido==1.2.0",
-    "mosek==11.0.30",
+    "mosek==11.1.2",
     "plotly>=6.5.0",
     "marimo>=0.18.4",
     "matplotlib>=3.10.8",
