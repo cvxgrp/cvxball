@@ -98,7 +98,7 @@ def plot_points(p, p0=None, r0=None):
 
     plt.rc("savefig", dpi=120)
 
-    fig, ax = plt.subplots()
+    _fig, ax = plt.subplots()
     ax.set_aspect("equal")
     ax.plot([p[i][0] for i in range(k)], [p[i][1] for i in range(k)], "b*")
 
