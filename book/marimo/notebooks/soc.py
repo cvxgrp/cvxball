@@ -6,7 +6,7 @@
 # ]
 #
 # [tool.uv.sources]
-# cvxball = { path = "../..", editable=true }
+# cvxball = { path = "../../..", editable=true }
 # ///
 
 """Interactive marimo notebook demonstrating second-order cone formulations.
