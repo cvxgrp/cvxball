@@ -67,28 +67,28 @@ def plot_results(sizes: list[int], times: list[float]) -> None:
     # Add actual execution times
     fig.add_trace(
         go.Scatter(
-            x=sizes, y=times, name="Actual Time", mode="lines+markers", line=dict(color="blue"), marker=dict(size=8)
+            x=sizes, y=times, name="Actual Time", mode="lines+markers", line={"color": "blue"}, marker={"size": 8}
         )
     )
 
     # Add theoretical O(n) complexity line
     normalized_n = np.array(sizes) / sizes[0]
     fig.add_trace(
-        go.Scatter(x=sizes, y=normalized_n * times[0], name="O(n)", line=dict(color="red", dash="dash"), mode="lines")
+        go.Scatter(x=sizes, y=normalized_n * times[0], name="O(n)", line={"color": "red", "dash": "dash"}, mode="lines")
     )
 
     # Update layout with log scales
     fig.update_layout(
         title="Algorithm Performance Analysis",
-        xaxis=dict(
-            title="Input Size (n)",
-            type="log",
-            dtick="D1",  # Show ticks for each power of 10
-        ),
-        yaxis=dict(title="Execution Time (seconds)", type="log", dtick="D1"),
+        xaxis={
+            "title": "Input Size (n)",
+            "type": "log",
+            "dtick": "D1",  # Show ticks for each power of 10
+        },
+        yaxis={"title": "Execution Time (seconds)", "type": "log", "dtick": "D1"},
         hovermode="x unified",
         showlegend=True,
-        legend=dict(yanchor="top", y=0.99, xanchor="left", x=0.99),
+        legend={"yanchor": "top", "y": 0.99, "xanchor": "left", "x": 0.99},
         plot_bgcolor="white",
     )
 
