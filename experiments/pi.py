@@ -25,7 +25,7 @@ if __name__ == "__main__":
     # Compute integral: ∫_{0}^{1} (a + bx^2 + cx^4) dx
     integral_approx = a * 1 + b * (1 / 3) + c * (1 / 5)
 
-    # Estimate π as 4 × integral
+    # Estimate pi as 4 * integral
     pi_approx = 4 * integral_approx
 
     # Constraints: Ensure p(x) ≤ sqrt(1 - x^2) for x in [0,1]
