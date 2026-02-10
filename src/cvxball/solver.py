@@ -39,7 +39,7 @@ def min_circle_cvx(points: np.ndarray, **kwargs: dict[str, Any]) -> tuple[float,
     # cvxpy variable for the midpoint
     x = cp.Variable(points.shape[1], name="Midpoint")
     objective = cp.Minimize(r)
-    constraints = [
+    constraints: list[cp.Constraint] = [
         cp.SOC(
             r * np.ones(points.shape[0]),
             points - x,  # Broadcasting handles this automatically
