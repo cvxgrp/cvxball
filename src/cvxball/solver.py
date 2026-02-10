@@ -39,15 +39,19 @@ def min_circle_cvx(points: np.ndarray, **kwargs: dict[str, Any]) -> tuple[float,
     # cvxpy variable for the midpoint
     x = cp.Variable(points.shape[1], name="Midpoint")
     objective = cp.Minimize(r)
-    constraints = [
+    constraints: list[cp.Constraint] = [
         cp.SOC(
             r * np.ones(points.shape[0]),
-            points - cp.outer(np.ones(points.shape[0]), x),
+            points - x,  # Broadcasting handles this automatically
             axis=1,
         )
     ]
 
     problem = cp.Problem(objective=objective, constraints=constraints)
-    problem.solve(**kwargs)
+    problem.solve(**kwargs)  # type: ignore[no-untyped-call]
 
-    return r.value[0], x.value
+    # Ensure the problem was solved successfully
+    assert r.value is not None, "Optimization failed to find a solution"
+    assert x.value is not None, "Optimization failed to find a solution"
+
+    return float(r.value[0]), x.value
