@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Fast computation of the smallest enclosing sphere"
 authors = [{name='Thomas Schmelzer', email= 'thomas.schmelzer@gmail.com'}]
 readme = "README.md"
-requires-python = ">=3.11,<3.14"
+requires-python = ">=3.14,<3.15"
 classifiers = [
     "Private :: Do Not Upload",
     "Programming Language :: Python :: 3",
