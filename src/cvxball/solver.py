@@ -48,10 +48,10 @@ def min_circle_cvx(points: np.ndarray, **kwargs: dict[str, Any]) -> tuple[float,
     ]
 
     problem = cp.Problem(objective=objective, constraints=constraints)
-    problem.solve(**kwargs)  # type: ignore[no-untyped-call]
+    problem.solve(**kwargs)
 
     # Ensure the problem was solved successfully
-    assert r.value is not None, "Optimization failed to find a solution"
-    assert x.value is not None, "Optimization failed to find a solution"
+    if r.value is None or x.value is None:
+        raise ValueError("Optimization failed to find a solution")  # noqa: TRY003
 
     return float(r.value[0]), x.value
