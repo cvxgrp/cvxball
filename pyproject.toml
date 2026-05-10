@@ -42,9 +42,6 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 packages = ["src/cvxball"]
 
-[tool.mypy]
-ignore_missing_imports = true
-
 [tool.deptry]
 package_module_name_map = { "cvxpy-base" = "cvxpy", clarabel = "clarabel", numpy = "numpy", scipy = "scipy", kaleido = "kaleido", mosek = "mosek", plotly = "plotly", marimo = "marimo", matplotlib = "matplotlib", pandas = "pandas" }
 
