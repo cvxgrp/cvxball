@@ -6,5 +6,8 @@ templates:
   - github
   - legal
   - tests
+  - github-tests
   - book
+  - github-book
   - marimo
+  - github-marimo
