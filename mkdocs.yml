@@ -16,12 +16,19 @@ nav:
   - Development:
     - Tests: development/TESTS.md
     - Marimo: development/MARIMO.md
+  - Reports:
+    - Test Report: reports/html-report/report.html
+    - Coverage Report: reports/html-coverage/index.html
 
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/cvxgrp/cvxball
 
-theme:
-  icon:
-    logo: material/circle-outline
+plugins:
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+            show_source: true
+            show_root_heading: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+
