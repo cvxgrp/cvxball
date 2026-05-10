@@ -58,7 +58,6 @@ def setup_sync_env(logger, root, tmp_path: Path):
         "github.mk",
         "agentic.mk",
         "docker.mk",
-        "docs.mk",
     ]
     (tmp_path / ".rhiza" / "make.d").mkdir(parents=True, exist_ok=True)
     for mk_file in split_makefiles:
@@ -87,7 +86,7 @@ def setup_sync_env(logger, root, tmp_path: Path):
     os.chdir(tmp_path)
     logger.debug("Changed working directory to %s", tmp_path)
 
-    # Initialize a git repo so that commands checking for it (like materialize) don't fail validation
+    # Initialize a git repo so that commands checking for it (like sync) don't fail validation
     setup_rhiza_git_repo()
 
     # Create src and tests directories to satisfy validate
