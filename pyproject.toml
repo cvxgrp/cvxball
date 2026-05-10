@@ -19,6 +19,7 @@ dependencies = [
     "cvxpy-base>=1.8.2",
     "clarabel>=0.11.1",
     "numpy>=2.4.4",
+    "scipy>=1.15.3",
 ]
 
 [project.urls]
@@ -45,7 +46,7 @@ packages = ["src/cvxball"]
 ignore_missing_imports = true
 
 [tool.deptry]
-package_module_name_map = { cvxpy = "cvxpy-base" }
+package_module_name_map = { "cvxpy-base" = "cvxpy", clarabel = "clarabel", numpy = "numpy", scipy = "scipy", kaleido = "kaleido", mosek = "mosek", plotly = "plotly", marimo = "marimo", matplotlib = "matplotlib", pandas = "pandas" }
 
 [tool.deptry.per_rule_ignores]
 DEP002 = ["clarabel", "cvxpy-base"]

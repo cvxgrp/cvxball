@@ -189,6 +189,7 @@ dependencies = [
     { name = "clarabel" },
     { name = "cvxpy-base" },
     { name = "numpy" },
+    { name = "scipy" },
 ]
 
 [package.dev-dependencies]
@@ -206,6 +207,7 @@ requires-dist = [
     { name = "clarabel", specifier = ">=0.11.1" },
     { name = "cvxpy-base", specifier = ">=1.8.2" },
     { name = "numpy", specifier = ">=2.4.4" },
+    { name = "scipy", specifier = ">=1.15.3" },
 ]
 
 [package.metadata.requires-dev]
