@@ -1,5 +1,7 @@
 """Tests for the convex minimum enclosing circle solver utilities."""
 
+from unittest.mock import MagicMock, patch
+
 import numpy as np
 import pytest
 
@@ -34,3 +36,28 @@ def test_clarabel_direct_matches_cvx():
 
     assert radius_clarabel == pytest.approx(radius_cvx, rel=1e-5)
     assert center_clarabel == pytest.approx(center_cvx, rel=1e-4)
+
+
+def test_min_circle_cvx_infeasible():
+    """Raise ValueError when CVXPY returns None (infeasible/unbounded)."""
+    p = np.array([[0.0, 0.0], [1.0, 1.0]])
+    with (
+        patch("cvxpy.Problem.solve"),
+        patch("cvxpy.Variable.value", new_callable=lambda: property(lambda self: None)),
+        pytest.raises(ValueError, match="Optimization failed"),
+    ):
+        min_circle_cvx(p)
+
+
+def test_min_circle_clarabel_non_converged():
+    """Raise ValueError when Clarabel returns a non-Solved status."""
+    import clarabel
+
+    p = np.array([[0.0, 0.0], [1.0, 1.0]])
+    bad_solution = MagicMock()
+    bad_solution.status = clarabel.SolverStatus.AlmostSolved  # ty: ignore[unresolved-attribute]
+
+    with patch("clarabel.DefaultSolver") as mock_solver_cls:  # ty: ignore[unresolved-attribute]
+        mock_solver_cls.return_value.solve.return_value = bad_solution
+        with pytest.raises(ValueError, match="Clarabel did not converge"):
+            min_circle_clarabel(p)
