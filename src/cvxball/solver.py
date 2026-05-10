@@ -132,16 +132,16 @@ def min_circle_clarabel(points: np.ndarray, verbose: bool = False) -> tuple[floa
     b[x_rows] = points.ravel()
 
     # --- Cones: n SOC cones each of dimension (d+1) --------------------------
-    cones = [clarabel.SecondOrderConeT(d + 1) for _ in range(n)]
+    cones = [clarabel.SecondOrderConeT(d + 1) for _ in range(n)]  # ty: ignore[unresolved-attribute]
 
     # --- Solve ---------------------------------------------------------------
-    settings = clarabel.DefaultSettings.default()
+    settings = clarabel.DefaultSettings.default()  # ty: ignore[unresolved-attribute]
     settings.verbose = verbose
 
-    solver = clarabel.DefaultSolver(p_mat, q, a_mat, b, cones, settings)
+    solver = clarabel.DefaultSolver(p_mat, q, a_mat, b, cones, settings)  # ty: ignore[unresolved-attribute]
     solution = solver.solve()
 
-    if solution.status != clarabel.SolverStatus.Solved:
+    if solution.status != clarabel.SolverStatus.Solved:  # ty: ignore[unresolved-attribute]
         raise ValueError(f"Clarabel did not converge: status = {solution.status}")  # noqa: TRY003
 
     return float(solution.x[0]), np.asarray(solution.x[1:])
