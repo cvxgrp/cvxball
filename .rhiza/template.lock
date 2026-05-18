@@ -8,11 +8,8 @@ templates:
 - core
 - github
 - legal
-- tests
 - github-tests
-- book
 - github-book
-- marimo
 - github-marimo
 files:
 - .bandit
@@ -100,5 +97,5 @@ files:
 - docs/mkdocs-base.yml
 - pytest.ini
 - ruff.toml
-synced_at: '2026-05-10T10:38:40Z'
+synced_at: '2026-05-18T00:18:42Z'
 strategy: merge
