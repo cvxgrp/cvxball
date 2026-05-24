@@ -5,9 +5,4 @@ profiles:
   - github-project
 
 templates:
-  - core
-  - github
   - legal
-  - github-tests
-  - github-book
-  - github-marimo
