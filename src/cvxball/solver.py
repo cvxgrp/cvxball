@@ -16,7 +16,7 @@ import numpy as np
 import scipy.sparse as sp
 
 
-def min_circle_cvx(points: np.ndarray, **kwargs: dict[str, Any]) -> tuple[float, np.ndarray]:
+def min_circle_cvx(points: np.ndarray, **kwargs: Any) -> tuple[float, np.ndarray]:
     """Compute the smallest enclosing circle for a set of points using convex optimization.
 
     This function solves the convex optimization problem to find the minimum radius
