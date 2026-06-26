@@ -449,7 +449,7 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v6.0.3
         with:
           fetch-depth: 0
 
@@ -468,7 +468,7 @@ jobs:
 
       - name: Set up Python
         if: steps.check_conda.outputs.should_generate == 'true'
-        uses: actions/setup-python@v6.2.0
+        uses: actions/setup-python@v6.3.0
         with:
           python-version-file: .python-version
 
