@@ -13,15 +13,21 @@ Validates that pyproject.toml:
 - includes at least one Python version classifier
 - declares a [dependency-groups] test group containing pytest
 - declares a [dependency-groups] lint group
+- version matches the latest git tag (vX.Y.Z → X.Y.Z)
 """
 
 from __future__ import annotations
 
 import re
+import shutil
+import subprocess  # nosec B404
 import tomllib
 from pathlib import Path
 
 import pytest
+from packaging.version import Version
+
+_GIT = shutil.which("git") or "/usr/bin/git"
 
 _SEMVER_RE = re.compile(r"^\d+\.\d+\.\d+")
 _REQUIRED_PROJECT_FIELDS = ("name", "version", "description", "readme", "requires-python", "license", "authors")
@@ -110,7 +116,7 @@ class TestProjectFields:
 class TestProjectUrls:
     """Tests for [project.urls] — Homepage and Repository links."""
 
-    @pytest.fixture(scope="class")
+    @pytest.fixture
     def urls(self, project: dict) -> dict:
         """Return the [project.urls] table."""
         table = project.get("urls")
@@ -136,7 +142,7 @@ class TestProjectUrls:
 class TestProjectClassifiers:
     """Tests for [project].classifiers — Python version and licence entries."""
 
-    @pytest.fixture(scope="class")
+    @pytest.fixture
     def classifiers(self, project: dict) -> list[str]:
         """Return the classifiers list."""
         cl = project.get("classifiers", [])
@@ -160,7 +166,7 @@ class TestProjectClassifiers:
 class TestDependencyGroups:
     """Tests for [dependency-groups] — ensures required groups are declared."""
 
-    @pytest.fixture(scope="class")
+    @pytest.fixture
     def dependency_groups(self, pyproject: dict) -> dict:
         """Return the [dependency-groups] table."""
         dg = pyproject.get("dependency-groups")
@@ -182,3 +188,30 @@ class TestDependencyGroups:
     def test_lint_group_present(self, dependency_groups: dict) -> None:
         """A 'lint' dependency group must be declared."""
         assert "lint" in dependency_groups, "[dependency-groups] must include a 'lint' group"
+
+
+class TestGitTagVersion:
+    """Tests for harmony between the latest git tag and pyproject.toml version."""
+
+    @pytest.fixture
+    def latest_tag(self, root: Path) -> str:
+        """Return the latest semver git tag, or skip if none exist."""
+        result = subprocess.run(  # nosec B603
+            [_GIT, "tag", "--list", "v*", "--sort=-version:refname"],
+            capture_output=True,
+            text=True,
+            cwd=root,
+        )
+        tags = [line.strip() for line in result.stdout.splitlines() if line.strip()]
+        if not tags:
+            pytest.skip("No version tags found in repository")
+        return tags[0]
+
+    def test_latest_tag_matches_pyproject_version(self, latest_tag: str, project: dict) -> None:
+        """The latest git tag (vX.Y.Z) must match [project].version in pyproject.toml."""
+        tag_version = str(Version(latest_tag.lstrip("v")))
+        pyproject_version = str(Version(project.get("version", "")))
+        assert tag_version == pyproject_version, (
+            f"Latest git tag {latest_tag!r} (→ {tag_version!r}) does not match "
+            f"[project].version {pyproject_version!r} in pyproject.toml"
+        )

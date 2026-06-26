@@ -16,15 +16,15 @@ from experiments.alter2 import min_circle_cvx as alter2
 if __name__ == "__main__":
     points = np.random.randn(10000, 5)
 
-    def cvx():
+    def cvx() -> None:
         """Run the CVXPY SOC vectorized formulation with CLARABEL."""
         min_circle_cvx(points, solver="CLARABEL")
 
-    def alter_a():
+    def alter_a() -> None:
         """Run the alternative SOC-per-point formulation with CLARABEL."""
         alter1(points, solver="CLARABEL")
 
-    def alter_b():
+    def alter_b() -> None:
         """Run the alternative norm-constraint formulation with CLARABEL."""
         alter2(points, solver="CLARABEL")
 

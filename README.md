@@ -22,6 +22,21 @@ radius, centre = min_circle_cvx(points, solver="CLARABEL")
 
 ```
 
+### 🔧 Which solver should I use?
+
+The package ships two entry points that solve the same problem:
+
+- **`min_circle_cvx`** — models the problem with [CVXPY](https://www.cvxpy.org)
+  and dispatches to any conic backend (default: CLARABEL). Most convenient and
+  flexible; carries CVXPY's canonicalisation overhead.
+- **`min_circle_clarabel`** — assembles the second-order cone program directly
+  and calls [Clarabel](https://clarabel.org) without CVXPY. Faster on large
+  inputs since it skips canonicalisation, at the cost of a lower-level API.
+
+Prefer `min_circle_cvx` for convenience and solver flexibility; reach for
+`min_circle_clarabel` when canonicalisation overhead dominates (many points /
+tight loops).
+
 ## 🧮 Background
 
 We are solving the convex optimization problem:

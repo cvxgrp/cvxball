@@ -5,6 +5,7 @@ increasing size and plots the observed scaling against an O(n) baseline.
 """
 
 import time
+from collections.abc import Callable
 
 import numpy as np
 import plotly.graph_objects as go
@@ -26,7 +27,7 @@ def cvx(n: int) -> float:
     return min_circle_cvx(points, solver="CLARABEL")
 
 
-def measure_execution_time(func, n: int, num_trials: int = 3) -> float:
+def measure_execution_time(func: Callable[[int], float], n: int, num_trials: int = 3) -> float:
     """Run multiple trials and return average execution time."""
     times = []
     for _ in range(num_trials):

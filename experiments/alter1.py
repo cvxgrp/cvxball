@@ -5,9 +5,10 @@ minimum enclosing circle/ball with a second-order cone (SOC) representation.
 """
 
 import cvxpy as cp
+import numpy as np
 
 
-def min_circle_cvx(points, **kwargs):
+def min_circle_cvx(points: np.ndarray, **kwargs) -> tuple[float, np.ndarray]:
     """Compute the minimum enclosing circle using SOC constraints via CVXPY.
 
     Args:

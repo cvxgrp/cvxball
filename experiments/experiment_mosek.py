@@ -13,7 +13,7 @@ import numpy as np
 from cvxball.solver import min_circle_cvx
 
 
-def min_circle_mosek(points, **kwargs):
+def min_circle_mosek(points: np.ndarray, **kwargs) -> tuple[float, np.ndarray]:
     """Solve the minimum enclosing ball using MOSEK Fusion.
 
     Args:
@@ -45,15 +45,15 @@ def min_circle_mosek(points, **kwargs):
 if __name__ == "__main__":
     points = np.random.rand(5000, 10)
 
-    def m1():
+    def m1() -> None:
         """Benchmark MOSEK Fusion implementation."""
         min_circle_mosek(points)
 
-    def m2():
+    def m2() -> None:
         """Benchmark CVXPY formulation solved with MOSEK backend."""
         min_circle_cvx(points, solver="MOSEK")
 
-    def m3():
+    def m3() -> None:
         """Benchmark CVXPY formulation solved with CLARABEL backend."""
         min_circle_cvx(points, solver="CLARABEL")
 

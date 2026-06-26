@@ -4,9 +4,10 @@ This variant uses explicit 2-norm constraints instead of the SOC vector form.
 """
 
 import cvxpy as cp
+import numpy as np
 
 
-def min_circle_cvx(points, **kwargs):
+def min_circle_cvx(points: np.ndarray, **kwargs) -> tuple[float, np.ndarray]:
     """Compute the minimum enclosing circle using 2-norm constraints via CVXPY.
 
     Args:
