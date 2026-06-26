@@ -3,6 +3,3 @@ template-branch: "v0.18.4"
 
 profiles:
   - github-project
-
-templates:
-  - legal
