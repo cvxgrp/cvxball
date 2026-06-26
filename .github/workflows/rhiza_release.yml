@@ -154,7 +154,7 @@ jobs:
           version: "0.11.16"
 
       - name: Configure git auth for private packages
-        uses: jebel-quant/rhiza/.github/actions/configure-git-auth@v0.18.5
+        uses: jebel-quant/rhiza/.github/actions/configure-git-auth@v0.19.5
         with:
           token: ${{ secrets.GH_PAT }}
 
@@ -193,7 +193,7 @@ jobs:
 
       - name: Install Python for SBOM generation
         if: hashFiles('pyproject.toml') != ''
-        uses: actions/setup-python@v6.2.0
+        uses: actions/setup-python@v6.3.0
         with:
           python-version-file: .python-version
 
@@ -470,7 +470,7 @@ jobs:
           uv sync --all-extras --all-groups --frozen
 
       - name: Set up Python
-        uses: actions/setup-python@v6.2.0
+        uses: actions/setup-python@v6.3.0
 
       - name: Generate Devcontainer Link
         id: devcontainer_link
