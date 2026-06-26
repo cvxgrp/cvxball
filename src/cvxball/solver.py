@@ -47,7 +47,10 @@ def min_circle_cvx(points: np.ndarray, **kwargs: Any) -> tuple[float, np.ndarray
     objective = cp.Minimize(r)
     constraints: list[cp.Constraint] = [
         cp.SOC(
-            r * np.ones(points.shape[0]),
+            # Elementwise broadcast of the scalar radius across all points.
+            # `cp.multiply` (not `*`) avoids CVXPY's deprecated `*`-as-matmul
+            # path, which is ambiguous when n == 1 ((1,) * (1,) -> dot product).
+            cp.multiply(r, np.ones(points.shape[0])),  # type: ignore[attr-defined]  # cvxpy re-exports atoms via star-import; stubs don't expose them
             points - x,  # Broadcasting handles this automatically
             axis=1,
         )
