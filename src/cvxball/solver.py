@@ -54,7 +54,7 @@ def min_circle_cvx(points: np.ndarray, **kwargs: dict[str, Any]) -> tuple[float,
     ]
 
     problem = cp.Problem(objective=objective, constraints=constraints)
-    problem.solve(**kwargs)
+    problem.solve(**kwargs)  # type: ignore[no-untyped-call]  # cvxpy's Problem.solve is unannotated
 
     # Ensure the problem was solved successfully
     if r.value is None or x.value is None:

@@ -62,3 +62,9 @@ package_module_name_map = { "cvxpy-base" = "cvxpy", clarabel = "clarabel", numpy
 [tool.deptry.per_rule_ignores]
 DEP002 = ["clarabel", "cvxpy-base"]
 DEP001 = ["cvxpy"]
+
+# clarabel and scipy ship without type information (no py.typed marker / stubs);
+# strict mypy would otherwise flag every import of them as import-untyped.
+[[tool.mypy.overrides]]
+module = ["clarabel.*", "scipy.*"]
+ignore_missing_imports = true
