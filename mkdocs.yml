@@ -25,6 +25,9 @@ plugins:
   - mkdocstrings:
       handlers:
         python:
+          # src-layout: let griffe locate the package statically, so the API docs
+          # build without installing cvxball into the isolated `uvx zensical` env.
+          paths: [src]
           options:
             docstring_style: google
             show_source: true
