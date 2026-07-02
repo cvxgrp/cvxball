@@ -1,15 +1,15 @@
-sha: 4b99a35c84f76c9bc161a9f106620c9dcd460e2c
+sha: 04d8f42656366a9e07dc584ff75ab579764d89b0
 repo: jebel-quant/rhiza
 host: github
-ref: v0.19.5
+ref: v1.0.1
 include: []
 exclude: []
-templates:
-- legal
+templates: []
 files:
 - .bandit
 - .claude/commands/rhiza_book.md
 - .claude/commands/rhiza_quality.md
+- .claude/commands/rhiza_release.md
 - .claude/commands/rhiza_update.md
 - .editorconfig
 - .github/CONFIG.md
@@ -41,8 +41,6 @@ files:
 - .rhiza/.env
 - .rhiza/.gitignore
 - .rhiza/.rhiza-version
-- .rhiza/CODE_OF_CONDUCT.md
-- .rhiza/CONTRIBUTING.md
 - .rhiza/assets/rhiza-logo.svg
 - .rhiza/completions/README.md
 - .rhiza/completions/rhiza-completion.bash
@@ -70,6 +68,7 @@ files:
 - .rhiza/tests/api/test_make_variable_overrides.py
 - .rhiza/tests/api/test_makefile_api.py
 - .rhiza/tests/api/test_makefile_targets.py
+- .rhiza/tests/api/test_releasing_targets.py
 - .rhiza/tests/conftest.py
 - .rhiza/tests/integration/test_book_targets.py
 - .rhiza/tests/integration/test_docs_targets.py
@@ -91,9 +90,9 @@ files:
 - .rhiza/tests/utils/test_suppression_audit.py
 - .rhiza/utils/pip_audit_policy.py
 - .rhiza/utils/suppression_audit.py
-- LICENSE
+- .rhiza/utils/suppression_parse.py
+- .rhiza/utils/suppression_report.py
 - Makefile
-- SECURITY.md
 - cliff.toml
 - docs/assets/rhiza-logo.svg
 - docs/development/MARIMO.md
@@ -104,5 +103,5 @@ files:
 - ruff.toml
 profiles:
 - github-project
-synced_at: '2026-06-26T06:50:04Z'
+synced_at: '2026-07-02T07:09:15Z'
 strategy: merge
