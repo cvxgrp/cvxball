@@ -66,12 +66,12 @@ def min_circle_cvx(points: np.ndarray, **kwargs: Any) -> tuple[float, np.ndarray
     return float(r.value[0]), x.value
 
 
-def min_circle_clarabel(points: np.ndarray, verbose: bool = False) -> tuple[float, np.ndarray]:
-    """Compute the smallest enclosing circle for a set of points using Clarabel directly.
+def _build_soc_program(
+    points: np.ndarray,
+) -> tuple[sp.csc_matrix, np.ndarray, sp.csc_matrix, np.ndarray, list[Any]]:
+    """Assemble the Clarabel second-order-cone program for the enclosing ball.
 
-    This function solves the same convex optimisation problem as
-    :func:`min_circle_cvx` but bypasses CVXPY and calls the Clarabel solver
-    directly.  The problem is assembled in Clarabel's standard form::
+    The problem is written in Clarabel's standard form::
 
         minimise   (1/2) z' P z + q' z
         subject to A z + s = b,  s ∈ K
@@ -86,21 +86,13 @@ def min_circle_clarabel(points: np.ndarray, verbose: bool = False) -> tuple[floa
     Args:
         points: A numpy array of shape ``(n, d)`` where *n* is the number of
                 points and *d* is the ambient dimension.
-        verbose: If ``True``, print Clarabel's iteration log.  Defaults to
-                 ``False``.
 
     Returns:
-        A tuple ``(radius, center)`` where *radius* is the optimal enclosing
-        radius (float) and *center* is a numpy array of shape ``(d,)``.
-
-    Raises:
-        ValueError: If Clarabel does not return a ``Solved`` status.
-
-    Example:
-        >>> import numpy as np
-        >>> from cvxball.solver import min_circle_clarabel
-        >>> points = np.array([[0, 0], [1, 0], [0, 1]])
-        >>> radius, center = min_circle_clarabel(points)
+        A tuple ``(p_mat, q, a_mat, b, cones)`` of the objective quadratic
+        ``P``, the objective linear term ``q``, the constraint matrix ``A``,
+        the constraint right-hand side ``b``, and the list of *n* second-order
+        cones — the exact positional arguments Clarabel's ``DefaultSolver``
+        expects.
     """
     n, d = points.shape
     n_vars = 1 + d  # decision vector: [r, x_1, ..., x_d]
@@ -136,6 +128,39 @@ def min_circle_clarabel(points: np.ndarray, verbose: bool = False) -> tuple[floa
 
     # --- Cones: n SOC cones each of dimension (d+1) --------------------------
     cones = [clarabel.SecondOrderConeT(d + 1) for _ in range(n)]  # ty: ignore[unresolved-attribute]
+
+    return p_mat, q, a_mat, b, cones
+
+
+def min_circle_clarabel(points: np.ndarray, verbose: bool = False) -> tuple[float, np.ndarray]:
+    """Compute the smallest enclosing circle for a set of points using Clarabel directly.
+
+    This function solves the same convex optimisation problem as
+    :func:`min_circle_cvx` but bypasses CVXPY and calls the Clarabel solver
+    directly.  The second-order-cone program is assembled by
+    :func:`_build_soc_program`; this function then solves it and extracts the
+    optimal radius and centre.
+
+    Args:
+        points: A numpy array of shape ``(n, d)`` where *n* is the number of
+                points and *d* is the ambient dimension.
+        verbose: If ``True``, print Clarabel's iteration log.  Defaults to
+                 ``False``.
+
+    Returns:
+        A tuple ``(radius, center)`` where *radius* is the optimal enclosing
+        radius (float) and *center* is a numpy array of shape ``(d,)``.
+
+    Raises:
+        ValueError: If Clarabel does not return a ``Solved`` status.
+
+    Example:
+        >>> import numpy as np
+        >>> from cvxball.solver import min_circle_clarabel
+        >>> points = np.array([[0, 0], [1, 0], [0, 1]])
+        >>> radius, center = min_circle_clarabel(points)
+    """
+    p_mat, q, a_mat, b, cones = _build_soc_program(points)
 
     # --- Solve ---------------------------------------------------------------
     settings = clarabel.DefaultSettings.default()  # ty: ignore[unresolved-attribute]
