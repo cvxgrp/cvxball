@@ -33,7 +33,7 @@ dev = [
     "mosek==11.2.2",
     "plotly>=6.9.0",
     "marimo>=0.23.14",
-    "matplotlib>=3.11.0",
+    "matplotlib>=3.11.1",
     "pandas>=3.0.3"
 ]
 test = [
@@ -42,10 +42,10 @@ test = [
     "pytest-mock>=3.0",
     "pytest-xdist>=3.0",
     "pytest-timeout>=2.0",
-    "hypothesis>=6.156.6",
+    "hypothesis>=6.157.2",
 ]
 lint = [
-    "ruff>=0.15.21",
+    "ruff>=0.15.22",
     "pre-commit>=4.0",
 ]
 
